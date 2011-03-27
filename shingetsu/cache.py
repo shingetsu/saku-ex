@@ -50,7 +50,6 @@ try:
     import PIL.Image
 except ImportError:
     PIL = None
-    sys.stdout.write('system does not have PIL.\n');
 
 __version__ = '$Revision$'
 __all__ = ['Record', 'Cache', 'CacheList', 'UpdateList', 'RecentList']
@@ -421,18 +420,6 @@ class Record(dict):
             self.free()
             return False
 
-    def has_valid_stamp(self):
-        """The record has valid stamp or not.
-
-        In 2ch.net BBS, 'sage' command prohibit updating timestamp of the
-        thread.
-
-        When a 'sage' is in mail field and config.sage is true,
-        the timestamp of the file is not updated.
-        """
-        return ((not config.sage) or
-                (not ('sage' in self.get('mail', '').lower())))
-
 # End of Record
 
 
@@ -697,8 +684,7 @@ class Cache(dict):
             self.count += 1
         if really:
             if self.valid_stamp < rec.stamp:
-                if rec.has_valid_stamp():
-                    self.valid_stamp = rec.stamp
+                self.valid_stamp = rec.stamp
         if self.stamp < rec.stamp:
             self.stamp = rec.stamp
 
@@ -887,8 +873,7 @@ class CacheList(list):
                         if cache.stamp < rec.stamp:
                             cache.stamp = rec.stamp
                         if cache.valid_stamp < rec.stamp:
-                            if rec.has_valid_stamp():
-                                cache.valid_stamp = rec.stamp
+                            cache.valid_stamp = rec.stamp
                         cache.size += len(str(rec))
                         cache.count += 1
                         rec.sync()

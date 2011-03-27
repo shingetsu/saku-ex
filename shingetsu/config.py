@@ -153,7 +153,6 @@ thumbnail_size = _get_value(_extconf,
 force_thumbnail = _get_value(_extconf,
                              'Application Thread',
                              'force_thumbnail', False, 'boolean')
-sage = _get_value(_extconf, 'Application Thread', 'sage', False, 'boolean')
 
 client_cycle = 5*60         # Seconds; Access client.cgi
 ping_cycle = 5*60           # Seconds; Check nodes
