@@ -1,0 +1,43 @@
+#!/bin/sh -e
+#
+# start/stop SAKU server.
+#
+# Copyright (C) 2005-2010 shinGETsu Project.
+# $Id$
+#
+
+USER=shingetsu
+COMMAND=/usr/local/bin/saku
+PIDFILE=/var/local/run/saku/pid.txt
+
+test -x $COMMAND || exit 0
+
+case "$1" in
+    start)
+        echo -n "Starting p2p bbs: saku"
+        cd /
+        sudo -u $USER setsid $COMMAND < /dev/null > /dev/null 2>&1 &
+        echo "."
+    ;;
+    stop)
+        echo -n "Stopping p2p bbs: saku"
+        if [ ! -f $PIDFILE ]; then
+            echo " not running."
+            exit 0
+        fi
+        kill -TERM -`cat $PIDFILE`
+        pkill -KILL -`cat $PIDFILE` > /dev/null 2>&1 || true
+        rm $PIDFILE
+        echo "."
+    ;;
+    restart|force-reload)
+        $0 stop
+        $0 start
+    ;;
+    *)
+        echo "Usage: $0 {start|stop|restart|force-reload}"
+        exit 1
+    ;;
+esac
+
+exit 0
