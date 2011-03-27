@@ -57,11 +57,11 @@ def _get_version():
     if (not re.search(r'^\d', version)) and os.path.isfile(version_file):
         try:
             f = open(version_file)
-            version += '/svn/' + f.read().strip()
+            version = 'svn-' + f.read().strip()
             f.close()
         except (IOError, OSError):
             pass
-    return 'shinGETsu/0.7 (Saku/%s)' % version
+    return 'shinGETsu/0.7 (Saku-Ex/%s)' % version
 
 
 # External config files.

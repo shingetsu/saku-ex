@@ -1,5 +1,5 @@
-朔 - P2P匿名掲示板「新月」のクローン
-====================================
+朔(Extreme版) - P2P匿名掲示板「新月」のクローン
+============--=================================
 
 Author(s):
   (main)            Satoshi Fukutomi <fuktommy@shingetsu.info>
@@ -42,27 +42,13 @@ Sakuは Shingetsu Another Keen Utility の略です。
     Python (ver.2.5以降)
     Cheetah (ver.2.0rc7 以降) 朔をインストールする場合
 
-●Windows版に必要なプログラム
-    Windows (XPで動作確認)
-
-●Windows版の場合
-(1) UPnPを利用できるルータを使っていない場合には
-    ポート 8000/tcp を開けてください。
-(2) file/saku.ini ファイルでポート番号などを設定できます。
-    詳しくは file/sample.ini をご覧ください。
-(3) tksaku.exe(ウィンドウ版) か saku.exe(コンソール版)
-    をダブルクリックすると起動します。
-(4) saku.exe を止めるには ^C (Ctrl+C)を押下してください。
-
 ●共通版をインストールせずに使う場合
 (1) UPnPを利用できるルータを使っていない場合には
     ポート 8000/tcp を開けてください。
 (2) file/saku.ini ファイルでポート番号などを設定できます。
     詳しくは file/sample.ini をご覧ください。
 (3) 次のコマンドで起動します。
-    % ./saku.py
-    またはGUI版の
-    % ./tksaku.pyw
+    % python ./saku.py -v
     その後 http://localhost:8000/ を表示してください。
 (4) 止めるときは ^C (Ctrl+C)を押下してください。
     GUI版では「STOP」ボタンでも終了します。
@@ -98,7 +84,7 @@ Sakuは Shingetsu Another Keen Utility の略です。
     その後 http://localhost:8000/ を表示してください。
 (7) 次のコマンドで終了します。
     # /usr/local/etc/init.d/saku stop
-(8) /usr/local/bin/saku, /usr/local/bin/tksaku でも起動できます。
+(8) /usr/local/bin/saku でも起動できます。
     この場合はユーザアプリケーションとしての動作です。
 
 ●謝辞

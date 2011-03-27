@@ -1,5 +1,5 @@
 #!/usr/bin/env python
-# Copyright (C) 2005-2007 shinGETsu Project.
+# Copyright (C) 2005-2011 shinGETsu Project.
 #
 # $Id$
 #
@@ -32,7 +32,6 @@ def globcopy(src, dst):
 
 def setup_script_files():
     copy("saku.py", "saku")
-    copy("tksaku.pyw", "tksaku")
 
 def setup_data_files():
     for i in (lib_dir, data_dir, file_dir, template_dir,
@@ -105,8 +104,7 @@ setup(name = "saku",
       platforms = 'any',
       long_description =
             'A clone of P2P anonymous BBS shinGETsu written by Python.'
-            ' This includes daemon, GUI application(GTK),'
-            ' and Apache config files.',
-      scripts = ["saku", "tksaku"],
+            ' This includes libraries, daemon, and Apache config files.',
+      scripts = ["saku"],
       packages = ["shingetsu"],
       data_files = data_files)
