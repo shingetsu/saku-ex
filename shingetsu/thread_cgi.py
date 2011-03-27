@@ -142,8 +142,7 @@ class CGI(gateway.CGI):
         self.stdout.write(self.template('page_navi', var))
 
     def print_tags(self, cache):
-        for tags, classname, target in ((cache.tags, 'tags', 'changes'),
-                                        (cache.sugtags, 'sugtags', 'recent')):
+        for tags, classname, target in ((cache.tags, 'tags', 'changes'),):
             if not (self.isadmin or self.isfriend):
                 target = 'changes'
             var = {

@@ -551,17 +551,14 @@ class CGI(basecgi.CGI):
             return None
         elif self.tag:
             matchtag = False
-            for t in (cache.tags + cache.sugtags):
+            for t in cache.tags:
                 if str(t).lower() == self.tag:
                     matchtag = True
                     break
             if not matchtag:
                 return None
         x = self.escape_space(x)
-        if cache.tags:
-            tags, tagclassname = cache.tags, 'tags'
-        else:
-            tags, tagclassname = cache.sugtags, 'sugtags'
+        tags, tagclassname = cache.tags, 'tags'
         if search:
             str_opts = '?search_new_file=yes'
         else:
