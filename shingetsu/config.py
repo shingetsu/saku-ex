@@ -75,7 +75,6 @@ _extconf.read(['file/saku.ini',
 types = ("thread",)
 
 port = _get_value(_extconf, 'Network', 'port', 8000, 'int')
-use_upnp = _get_value(_extconf, 'Network', 'upnp', False, 'boolean')
 max_connection = _get_value(_extconf, 'Network', 'max_connection', 20, 'int')
 
 docroot = _get_value(_extconf, 'Path', 'docroot', './www', 'path')
@@ -158,7 +157,6 @@ client_cycle = 5*60         # Seconds; Access client.cgi
 ping_cycle = 5*60           # Seconds; Check nodes
 sync_cycle = 5*60*60        # Seconds; Check cache
 init_cycle = 20*60          # Seconds; Check initial node
-upnp_cycle = 1*60*60        # Seconds
 update_range = 24*60*60     # Seconds
 wait_update = 10            # Seconds
 time_error = 60             # Seconds
@@ -166,7 +164,6 @@ search_timeout = 10*60      # Seconds
 timeout = 20                # Seconds; Timeout for TCP
 get_timeout = 2*60          # Seconds; Timeout for /get
 client_timeout = 30*60      # Seconds; client_timeout < sync_cycle
-upnp_timeout = 20           # Seconds
 tk_save_warn = 5*60         # Seconds
 retry = 5                   # Times; Common setting
 retry_join = 2              # Times; Join network

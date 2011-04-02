@@ -1,7 +1,7 @@
 '''daemon.py - SAKU daemon module.
 '''
 #
-# Copyright (c) 2005,2006 shinGETsu Project.
+# Copyright (c) 2005-2011 shinGETsu Project.
 # All rights reserved.
 #
 # Redistribution and use in source and binary forms, with or without
@@ -35,11 +35,9 @@ import time
 import config
 import httpd
 import crond
-from upnp import findrouter
 
 __version__ = "$Revision$"
 
-router = None
 
 class Logger:
 
@@ -105,16 +103,7 @@ def start_daemon():
         except (IOError, OSError), err:
             sys.stderr.write('IOError/OSError: %s\n' % err)
 
-    global router
-    if config.use_upnp:
-        sys.stderr.write("finding router\n")
-        router = findrouter(config.upnp_timeout)
-        if router:
-            sys.stderr.write("found router: %s\n" % router)
-        else:
-            sys.stderr.write("Error: faild to find router\n")
-
-    crondaemon = crond.Crond(router)
+    crondaemon = crond.Crond()
     crondaemon.setDaemon(True)
     crondaemon.start()
 
@@ -125,11 +114,4 @@ def start_daemon():
     return httpdaemon
 
 def stop_daemon():
-    if router:
-        sys.stderr.write("sending router closeport %d: %s\n" %
-                         (config.port, router))
-        flag = router.closeport(config.port, "TCP")
-        if flag:
-            sys.stderr.write("closeport succeed: %s\n" % router)
-        else:
-            sys.stderr.write("Error: closeport failed: %s\n" % router)
+    pass

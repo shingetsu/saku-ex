@@ -38,22 +38,20 @@ Sakuは Shingetsu Another Keen Utility の略です。
       - IRCを参考にしたキャッシュ
       - アップローダ
 
-●共通版に必要なプログラム
+●朔に必要なプログラム
     Python (ver.2.5以降)
     Cheetah (ver.2.0rc7 以降) 朔をインストールする場合
 
-●共通版をインストールせずに使う場合
-(1) UPnPを利用できるルータを使っていない場合には
-    ポート 8000/tcp を開けてください。
+●朔をインストールせずに使う場合
+(1) ポート 8000/tcp を開けてください。
 (2) file/saku.ini ファイルでポート番号などを設定できます。
     詳しくは file/sample.ini をご覧ください。
 (3) 次のコマンドで起動します。
     % python ./saku.py -v
     その後 http://localhost:8000/ を表示してください。
 (4) 止めるときは ^C (Ctrl+C)を押下してください。
-    GUI版では「STOP」ボタンでも終了します。
 
-●共通版をインストールする場合
+●朔をインストールする場合
 (1) Cheetah (http://www.cheetahtemplate.org/) をインストールします。
 (2) ポート 8000/tcp が開いていることを確認します。
 (3) 次のコマンドを実行します。
@@ -98,7 +96,5 @@ Sakuは Shingetsu Another Keen Utility の略です。
     (http://tubo.80.kg/)
 (5) XLSTは Landscape を参考にしました。
     (http://sonic64.com/2005-03-16.html)
-(6) UPnPは βえんどるふぃん を参考にしました。
-    (http://www.aa.alpha-net.ne.jp/bosuke/trash/upnp.htm)
 
 $Id$

@@ -42,19 +42,19 @@ Both the word ``saku'' and ``shingetsu'' mean the new moon in Japanese.
       - IRC style cache
       - Uploader
 
-* Package common version Saku requires
+* Saku requires
     Python (ver.2.4 or later)
     Cheetah (ver.2.0rc7 or later) if you install Saku
 
-* Usage common version without install
-(1) If your router can not accept UPnP, open port 8000/tcp.
+* Usage Saku without install
+(1) Open port 8000/tcp.
 (2) Edit file/saku.ini.
 (3) Start with
     % python ./saku.py -v
     Browse http://localhost:8000/.
 (4) Stop with ^C.
 
-* Usage common version with install
+* Usage Saku with install
 (1) Install Cheetah (http://www.cheetahtemplate.org/).
 (2) Open port 8000/tcp.
 (3) Compile and install.
@@ -93,7 +93,5 @@ Both the word ``saku'' and ``shingetsu'' mean the new moon in Japanese.
     (http://tubo.80.kg/)
 (5) XLST was made reffring to Landscape.
     (http://sonic64.com/2005-03-16.html)
-(6) UPnP module was made reffring to Beta-Endorphin.
-    (http://www.aa.alpha-net.ne.jp/bosuke/trash/upnp.htm)
 
 $Id$
