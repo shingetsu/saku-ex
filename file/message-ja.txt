@@ -25,7 +25,6 @@ title<>タイトル
 recent_changes<>最近の更新
 archive<>保管庫
 all<>全部
-mobile<>モバイル
 
 # description
 desc_index<>ディスクに保存され、自動的に更新される掲示板の一覧(文字コード順)

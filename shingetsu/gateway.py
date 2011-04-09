@@ -118,7 +118,6 @@ class CGI(basecgi.CGI):
     gateway_cgi = config.gateway
     thread_cgi = config.thread_cgi
     admin_cgi = config.admin_cgi
-    mobile_cgi = config.mobile_cgi
     message = None
     filter = None
     str_filter = ''
@@ -157,7 +156,6 @@ class CGI(basecgi.CGI):
             'gateway_cgi': self.gateway_cgi,
             'thread_cgi': self.thread_cgi,
             'admin_cgi': self.admin_cgi,
-            'mobile_cgi': self.mobile_cgi,
             'root_path': config.root_path,
             'archive_uri': config.archive_uri,
             'types': config.types,
@@ -242,7 +240,7 @@ class CGI(basecgi.CGI):
         return self.template('menubar', var)
 
     def header(self, title='', rss='',
-               cookie=None, deny_robot=False, mobile=''):
+               cookie=None, deny_robot=False):
         '''Print CGI and HTTP header.
         '''
         if rss == '':
@@ -253,7 +251,6 @@ class CGI(basecgi.CGI):
             'rss': rss,
             'cookie': cookie,
             'deny_robot': deny_robot,
-            'mobile': mobile,
             'js': self.extension('js'),
             'css': self.extension('css'),
             'menubar': self.menubar('top', rss)

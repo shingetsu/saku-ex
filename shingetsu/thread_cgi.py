@@ -182,13 +182,8 @@ class CGI(gateway.CGI):
             newcookie = self.setcookie(cache, access)
         else:
             newcookie = ''
-        mobileuri = '%s?thread=%s' % (self.mobile_cgi, str_path)
-        if page:
-            mobileuri += '&amp;page=%d' % page
-        elif id:
-            mobileuri += '&amp;id=%s' % id
         rss = self.gateway_cgi + '/rss'
-        self.header(path, rss=rss, cookie=newcookie, mobile=mobileuri)
+        self.header(path, rss=rss, cookie=newcookie)
         form = cgi.FieldStorage(environ=self.environ, fp=self.stdin)
         tags = form.getfirst('tag', '').strip().split()
         if self.isadmin and tags:

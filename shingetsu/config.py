@@ -111,7 +111,6 @@ record_limit = _get_value(_extconf, 'Gateway', 'record_limit', 2048, 'int')
 proxy_destination = _get_value(_extconf, 'Gateway', 'proxy_destination', '')
 archive_uri = _get_value(_extconf, 'Gateway', 'archive_uri',
                          'http://archive.shingetsu.info/')
-mobile_mail_domain = _get_value(_extconf, 'Gateway', 'mobile_mail_domain', '')
 tmpaddr_span = _get_value(_extconf, 'Gateway', 'tmpaddr_span', 60*60, 'int')
 re_admin = re.compile(admin)
 re_friend = re.compile(friend)
@@ -142,9 +141,6 @@ for type in types:
 thread_page_size = _get_value(_extconf,
                               'Application Thread',
                               'page_size', 50, 'int')
-mobile_page_size = _get_value(_extconf,
-                              'Application Thread',
-                              'mobile_page_size', 10, 'int')
 thumbnail_size = _get_value(_extconf,
                             'Application Thread',
                             'thumbnail_size', None, '')
@@ -205,10 +201,8 @@ read_status = run_dir + '/readstatus.txt'
 server = root_path + "server.cgi"
 client = root_path + "client.cgi"
 gateway = root_path + "gateway.cgi"
-mailapi = root_path + "mailapi.cgi"
 thread_cgi = root_path + "thread.cgi"
 admin_cgi = root_path + "admin.cgi"
-mobile_cgi = root_path + "mobile.cgi"
 xsl = root_path + "rss1.xsl"
 root_index = _get_value(_extconf, 'Gateway', 'root_index', gateway)
 

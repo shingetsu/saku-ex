@@ -31,8 +31,3 @@
 #if $config.archive_uri
   <a href="$archive_uri">$message['archive']</a>
 #end if
-#if $page
-  | <a href="$mobile_cgi?thread=$str_path&amp;page=$page">$message['mobile']</a>
-#else
-  | <a href="$mobile_cgi?thread=$str_path">$message['mobile']</a>
-#end if

@@ -124,8 +124,7 @@ class CGI(gateway.CGI):
         for cache in cachelist:
             if now <= cache.valid_stamp + config.top_recent_range:
                 output_cachelist.append(cache)
-        self.header(message['logo'] + ' - ' + message['description'],
-                    mobile = self.mobile_cgi)
+        self.header(message['logo'] + ' - ' + message['description'])
         var = {
             'cachelist': output_cachelist,
             'target': 'changes',

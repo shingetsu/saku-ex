@@ -34,7 +34,6 @@ title<>Title
 recent_changes<>Recent Changes
 archive<>Archive
 all<>All
-mobile<>Mobile
 
 # index
 filter<>Filter

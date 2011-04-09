@@ -19,9 +19,6 @@ $cookie
 #if $deny_robot
   <meta name="robots" content="NOINDEX" />
 #end if
-#if $mobile
-  <link rel="alternate" media="handheld" href="$mobile" />
-#end if
   <link rev="made" href="http://shingetsu.info/" />
   <link rel="contents" href="/" />
   <link rel="alternate" type="application/rss+xml" title="RSS" href="$rss" />
