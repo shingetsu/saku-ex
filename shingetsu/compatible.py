@@ -2,7 +2,6 @@
 '''
 #
 # This module contributed by a shinGETsu user.
-# http://archive.shingetsu.info/b1129f37d45b15269a0db850ac053d46/16186b33.html
 #
 # Copyright (c) 2008 shinGETsu Project.
 # All rights reserved.

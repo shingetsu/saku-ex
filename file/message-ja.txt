@@ -23,7 +23,6 @@ status<>状態
 agreement<>ネットワーク利用規約
 title<>タイトル
 recent_changes<>最近の更新
-archive<>保管庫
 all<>全部
 
 # description

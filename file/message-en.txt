@@ -32,7 +32,6 @@ status<>Status
 agreement<>Agreement
 title<>Title
 recent_changes<>Recent Changes
-archive<>Archive
 all<>All
 
 # index

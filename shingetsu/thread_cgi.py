@@ -137,7 +137,6 @@ class CGI(gateway.CGI):
             'str_path': str_path,
             'id': id,
             'first': first,
-            'archive_uri': self.archive_uri,
         }
         self.stdout.write(self.template('page_navi', var))
 
@@ -157,8 +156,6 @@ class CGI(gateway.CGI):
         str_path = self.str_encode(path)
         file_path = self.file_encode('thread', path)
         form = cgi.FieldStorage(environ=self.environ, fp=self.stdin)
-        self.archive_uri = '%s%s/' % (config.archive_uri,
-                                      md5.new(file_path).hexdigest())
         cache = Cache(file_path)
         if cache.has_record():
             pass
@@ -222,8 +219,6 @@ class CGI(gateway.CGI):
                 printed = True
             rec.free()
         self.stdout.write("</dl>\n")
-        if id and (not printed) and config.archive_uri:
-            self.print_jump('%s%s.html' % (self.archive_uri, id))
         escaped_path = cgi.escape(path)
         escaped_path = re.sub(r'  ', '&nbsp;&nbsp;', escaped_path)
         var = {

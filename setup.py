@@ -60,7 +60,6 @@ def setup_data_files():
     #copy("file/initnode.txt", os.path.join(conf_dir, "initnode.txt"))
     #copy("tool/saku.init", os.path.join(init_dir, "saku"))
     copy("tool/mkrss.py", os.path.join(lib_dir, "mkrss"))
-    copy("tool/mkarchive.py", os.path.join(lib_dir, "mkarchive"))
 
 
 def make_data_files():
@@ -74,7 +73,6 @@ def make_data_files():
         data_files.append((r[len("root")+1:], data))
     #os.chmod(os.path.join(init_dir, "saku"), execmode)
     os.chmod(os.path.join(lib_dir, "mkrss"), execmode)
-    os.chmod(os.path.join(lib_dir, "mkarchive"), execmode)
 
     return data_files
 

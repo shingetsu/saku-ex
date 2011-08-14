@@ -28,6 +28,3 @@
 #if $first > 1
   |
 #end if
-#if $config.archive_uri
-  <a href="$archive_uri">$message['archive']</a>
-#end if

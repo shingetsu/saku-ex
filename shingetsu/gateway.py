@@ -157,7 +157,6 @@ class CGI(basecgi.CGI):
             'thread_cgi': self.thread_cgi,
             'admin_cgi': self.admin_cgi,
             'root_path': config.root_path,
-            'archive_uri': config.archive_uri,
             'types': config.types,
             'isadmin': self.isadmin,
             'isfriend': self.isfriend,
@@ -372,11 +371,6 @@ class CGI(basecgi.CGI):
         '''Print CGI header (404 not found).'''
         self.header(self.message['404'], deny_robot=True)
         self.print_paragraph(self.message['404_body'])
-        if hasattr(self, 'archive_uri'):
-            if id:
-                self.print_jump('%s%s.html' % (self.archive_uri, id))
-            else:
-                self.print_jump(self.archive_uri)
         if cache is not None:
             self.remove_file_form(cache)
         self.footer()
