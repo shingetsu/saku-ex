@@ -25,6 +25,3 @@
 #if (not $id) and (($page+1) * $config.thread_page_size < len($cache))
   <a href="$thread_cgi/$str_path/p${$page+1}">$message['old_page']</a>
 #end if
-#if $first > 1
-  |
-#end if
