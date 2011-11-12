@@ -28,6 +28,8 @@
 # $Id$
 #
 
+import dircache
+import re
 import urllib
 import sys
 import time
@@ -35,6 +37,7 @@ from threading import Thread
 from urllib import urlopen
 
 import config
+import tiedobj
 
 __version__ = "$Revision$"
 
@@ -66,6 +69,15 @@ class Crond(Thread):
     def run(self):
         time.sleep(5)
         while True:
+            self.clear_cache()
             now = int(time.time())
             Client().start()
             time.sleep(config.client_cycle)
+
+    def clear_cache(self):
+        try:
+            re.purge()
+            dircache.reset()
+            tiedobj.reset()
+        except Exception, err:
+            sys.stderr.write('Crond.clear_cache(): %s\n' % err)

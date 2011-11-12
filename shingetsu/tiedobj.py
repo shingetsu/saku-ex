@@ -43,12 +43,14 @@ lock = RLock()
 _cache = {}
 
 
-def clean_cache():
-    '''Clean cache without create time nor access time.
-    '''
-    keys = _cache.keys()
-    while config.tiedfile_cache_size < len(keys):
-        del _cache[keys.pop(0)]
+def reset():
+    try:
+        lock.acquire(True)
+        global _cache
+        _cache = {}
+    finally:
+        lock.release()
+
 
 class ListFile:
     '''File includes list.
@@ -85,7 +87,6 @@ class ListFile:
         if caching and (self.path not in _cache) \
                    and os.path.isfile(self.path):
             _cache[self.path] = self
-            clean_cache()
 
     def __iter__(self):
         return iter(self.data)
@@ -116,7 +117,6 @@ class ListFile:
             lock.acquire(True)
             if self.caching:
                 _cache[self.path] = self
-                clean_cache()
             elif self.path in _cache:
                 del _cache[self.path]
             f = file(self.path, 'wb')
@@ -225,7 +225,6 @@ class DictFile:
             lock.acquire(True)
             if self.caching:
                 _cache[self.path] = self
-                clean_cache()
             elif self.path in _cache:
                 del _cache[self.path]
             f = file(self.path, 'wb')
