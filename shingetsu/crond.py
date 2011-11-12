@@ -71,6 +71,7 @@ class Crond(Thread):
 
     def run(self):
         time.sleep(5)
+        gc.set_debug(gc.DEBUG_UNCOLLECTABLE)
         while True:
             self.clear_cache()
             self.gc_debug()
