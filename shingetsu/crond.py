@@ -29,6 +29,7 @@
 #
 
 import dircache
+import gc
 import re
 import urllib
 import sys
@@ -63,6 +64,8 @@ class Crond(Thread):
 
     """Cron daemon running in another thread for client.cgi."""
 
+    gc_counter = {}
+
     def __init__(self):
         Thread.__init__(self)
 
@@ -70,6 +73,7 @@ class Crond(Thread):
         time.sleep(5)
         while True:
             self.clear_cache()
+            self.gc_debug()
             now = int(time.time())
             Client().start()
             time.sleep(config.client_cycle)
@@ -81,3 +85,17 @@ class Crond(Thread):
             tiedobj.reset()
         except Exception, err:
             sys.stderr.write('Crond.clear_cache(): %s\n' % err)
+
+    def gc_debug(self):
+        collect = gc.collect()
+        counter = {}
+        objects = gc.get_objects()
+        for i in objects:
+            t = str(type(i))
+            counter[t] = counter.get(t, 0) + 1
+        tmp = {}
+        for k in counter.keys():
+            if self.gc_counter.get(k, 0) != counter[k]:
+                tmp[k] = counter[k] - self.gc_counter.get(k, 0)
+                self.gc_counter[k] = counter[k]
+        print 'GC', collect, len(objects), len(gc.garbage), tmp
