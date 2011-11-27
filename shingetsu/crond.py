@@ -99,4 +99,4 @@ class Crond(Thread):
             if self.gc_counter.get(k, 0) != counter[k]:
                 tmp[k] = counter[k] - self.gc_counter.get(k, 0)
                 self.gc_counter[k] = counter[k]
-        print 'GC', collect, len(objects), len(gc.garbage), tmp
+        print 'GC', len(objects), len(gc.garbage), collect, tmp
