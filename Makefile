@@ -7,7 +7,7 @@
 
 PREFIX = /usr/local
 PACKAGE_DIR = ..
-PACKAGE = sakuex-svn$(shell cat file/version.txt)
+PACKAGE = sakuex-$(shell cat file/version.txt)
 
 .PHONY: all install exe version check clean distclean package
 
@@ -18,7 +18,7 @@ install:
 	python setup.py install --prefix=$(PREFIX)
 
 version:
-	env LANG=C svn info | awk '/^Revision: / {print $$2}' > file/version.txt
+	env LANG=C git log -n 1| ./tool/git2ver.sh > file/version.txt
 
 check:
 	sh tests/runtests.sh
@@ -27,15 +27,16 @@ clean:
 	rm -f saku
 	rm -Rf build dist root
 	rm -Rf cache log run
-	find . -name "*.py[co]" -print0 | xargs -0 rm -f
+	find . -name "*.py[co]" \! -path ".git/*" -print0 | xargs -0 rm -f
 
 distclean: clean
-	-svn cleanup
-	find . \( -name "*~" -o -name "#*" -o -name ".#*" \) -print0 | \
-	    xargs -0 rm -f
+	find . \( -name "*~" -o -name "#*" -o -name ".#*" \) \! -path ".git/*" \
+	    -print0 | \
+	    xargs -0 rm -fv
 
 package: distclean version
 	-rm -Rf $(PACKAGE_DIR)/$(PACKAGE).tar.gz $(PACKAGE_DIR)/$(PACKAGE)
 	cp -a . $(PACKAGE_DIR)/$(PACKAGE)
+	-rm -Rf $(PACKAGE_DIR)/$(PACKAGE)/.git*
 	tar -zcf $(PACKAGE_DIR)/$(PACKAGE).tar.gz -C $(PACKAGE_DIR) $(PACKAGE)
 	-rm -Rf $(PACKAGE_DIR)/$(PACKAGE)
