@@ -1,7 +1,7 @@
 '''Cron daemon running in another thread for client.cgi.
 '''
 #
-# Copyright (c) 2005,2011 shinGETsu Project.
+# Copyright (c) 2005-2012 shinGETsu Project.
 # All rights reserved.
 #
 # Redistribution and use in source and binary forms, with or without
@@ -25,8 +25,6 @@
 # OUT OF THE USE OF THIS SOFTWARE, EVEN IF ADVISED OF THE POSSIBILITY OF
 # SUCH DAMAGE.
 #
-# $Id$
-#
 
 import dircache
 import gc
@@ -40,7 +38,6 @@ from urllib import urlopen
 import config
 import tiedobj
 
-__version__ = "$Revision$"
 
 class Client(Thread):
 
@@ -74,7 +71,7 @@ class Crond(Thread):
         gc.set_debug(gc.DEBUG_UNCOLLECTABLE)
         while True:
             self.clear_cache()
-            self.gc_debug()
+            #self.gc_debug()
             now = int(time.time())
             Client().start()
             time.sleep(config.client_cycle)
