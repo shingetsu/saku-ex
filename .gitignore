@@ -1,0 +1,6 @@
+*.pyc
+*.pyo
+cache
+file/version.txt
+log
+run
