@@ -16,7 +16,7 @@
     <li>$gateway_link($admin_cgi, $i)</li>
   #end for
 #end if
-<li><a href="http://shingetsu.info/">$message['site']</a></li>
+<li><a href="http://www.shingetsu.info/">$message['site']</a></li>
 <li><a href="$gateway_cgi/motd">$message['agreement']</a></li>
 <li><a href="$gateway_cgi/rss">$message['rss']</a></li>
 </ul>
