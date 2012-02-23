@@ -1,8 +1,6 @@
 #
 # Makefile
-# Copyright (C) 2005-2011 shinGETsu Project.
-#
-# $Id$
+# Copyright (C) 2005-2012 shinGETsu Project.
 #
 
 PREFIX = /usr/local
