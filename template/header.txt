@@ -17,6 +17,7 @@ $cookie
 #end if
   <link rel="author" href="http://www.shingetsu.info/" />
   <link rel="contents" href="/" />
+  <link rel="index" href="/gateway.cgi/index" />
   <link rel="alternate" type="application/rss+xml" title="RSS" href="$rss" />
 #for $e in $js
   <script type="text/javascript" src="$root_path$e"></script>
