@@ -16,7 +16,7 @@ install:
 	python setup.py install --prefix=$(PREFIX)
 
 version:
-	env LANG=C git log -n 1| ./tool/git2ver.sh > file/version.txt
+	./tool/git2ver.sh > file/version.txt
 
 check:
 	sh tests/runtests.sh
