@@ -1,6 +1,5 @@
 /* Saku Default CSS
- * Copyright (c) 2005-2011 shinGETsu Project.
- * $Id$
+ * Copyright (c) 2005-2012 shinGETsu Project.
  */
 body {
     background-color: #fff;
@@ -24,8 +23,9 @@ dt {
 dd {
     margin-bottom: 1em;
 }
-address {
+div.address {
     text-align: center;
+    font-style: italic;
 }
 a:hover {
     color: #000;
