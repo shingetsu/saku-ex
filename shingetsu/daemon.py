@@ -1,7 +1,7 @@
-'''daemon.py - SAKU daemon module.
-'''
+"""daemon.py - SAKU daemon module.
+"""
 #
-# Copyright (c) 2005-2011 shinGETsu Project.
+# Copyright (c) 2005-2012 shinGETsu Project.
 # All rights reserved.
 #
 # Redistribution and use in source and binary forms, with or without
@@ -25,42 +25,45 @@
 # OUT OF THE USE OF THIS SOFTWARE, EVEN IF ADVISED OF THE POSSIBILITY OF
 # SUCH DAMAGE.
 #
-# $Id$
-#
 
 import os
 import sys
-import time
+from datetime import datetime
 
 import config
 import httpd
 import crond
 
-__version__ = "$Revision$"
-
 
 class Logger:
 
-    """Save logs to /LOGDIR/%Y-%m-%d."""
+    """Save logs to /LOGDIR/%Y-%m-%d.
+    """
 
     def __init__(self, logdir, additional=None):
         self.logdir = logdir
-        self.logfile = ""
+        self.logfile = ''
         self.output = None
         self.output2 = additional
+        self.lastline = '\n'
 
     def write(self, msg):
-        newlog = self.logdir + "/" + \
-                 time.strftime("%Y-%m-%d", time.localtime())
+        now = datetime.now()
+        newlog = os.path.join(self.logdir, now.strftime('%Y-%m-%d'))
+        if self.lastline.endswith('\n'):
+            msg = '%s<>%s' % (now.strftime('%Y-%m-%d %H:%M:%S'), msg)
+        self.lastline = msg
+
         if self.logfile == newlog:
             pass
-        elif self.logfile == "":
+        elif self.logfile == '':
             self.logfile = newlog
-            self.output = file(self.logfile, "a")
+            self.output = file(self.logfile, 'a')
         else:
             self.output.close()
             self.logfile = newlog
-            self.output = file(self.logfile, "a")
+            self.output = file(self.logfile, 'a')
+
         self.output.write(msg)
         self.output.flush()
         if self.output2:
@@ -74,7 +77,7 @@ class Logger:
         pass
 
 def setup():
-    config.flags.append("light_cgi")
+    config.flags.append('light_cgi')
     config.abs_docroot = os.path.join(os.getcwd(), config.docroot)
     for i in [os.path.join(config.docroot, j) for j in \
                 (config.run_dir, config.cache_dir)] + \
@@ -94,7 +97,7 @@ def start_daemon():
             try:
                 os.remove(lock)
             except OSError:
-                sys.stderr.write("OSError: removing %s\n" % lock)
+                sys.stderr.write('OSError: removing %s\n' % lock)
 
     if hasattr(os, 'getpid'):
         try:

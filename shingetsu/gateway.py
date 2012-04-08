@@ -136,6 +136,7 @@ class CGI(basecgi.CGI):
             al = ""
         self.message = search_message(al)
         addr = self.environ.get("REMOTE_ADDR", "")
+        self.remoteaddr = addr
         self.isadmin = config.re_admin.search(addr)
         self.isfriend = config.re_friend.search(addr)
         self.isvisitor = config.re_visitor.search(addr)
@@ -480,6 +481,10 @@ class CGI(basecgi.CGI):
         rec = Record(datfile=cache.datfile)
         passwd = form.getfirst("passwd", "")
         id = rec.build(stamp, body, passwd=passwd)
+
+        proxy_client = self.environ.get('HTTP_X_FORWARDED_FOR', 'direct')
+        self.stderr.write('post %d_%s from %s / %s\n' %
+                          (stamp, id, self.remoteaddr, proxy_client))
 
         if len(rec.recstr) > config.record_limit*1024:
             self.header(self.message['big_file'], deny_robot=True)

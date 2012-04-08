@@ -123,10 +123,11 @@ class HTTPRequestHandler(CGIHTTPServer.CGIHTTPRequestHandler):
         self.log_message("%s", "<>".join(buf))
 
     def log_message(self, format, *args):
-        sys.stderr.write("%s<>%s<>%s\n" %
+        proxy_client = self.headers.get('X-Forwarded-For', 'direct')
+        sys.stderr.write('%s<>%s<>%s\n' %
                          (self.address_string(),
-                          self.log_date_time_string(),
-                          format%args))
+                          proxy_client,
+                          format % args))
 
     def run_cgi(self):
         """Execute a CGI script in this process.
@@ -209,6 +210,8 @@ class HTTPRequestHandler(CGIHTTPServer.CGIHTTPRequestHandler):
             self.headers.get("Accept-Encoding", "")
         env["HTTP_HOST"] = self.headers.get('host', '')
         env["HTTP_REFERER"] = self.headers.get("Referer", "")
+        if 'X-Forwarded-For' in self.headers:
+            env['HTTP_X_FORWARDED_FOR'] = self.headers['X-Forwarded-For']
 
         # import CGI module
         try:
