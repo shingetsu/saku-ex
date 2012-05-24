@@ -38,16 +38,6 @@ a:hover {
 .sign {
     color: red;
 }
-.menu {
-    text-align: right;
-    background-color: #33a;
-    color: #fff;
-    padding: 3px;
-}
-.menu a {
-    color: #fff;
-    text-decoration: none;
-}
 table {
     border-collapse: collapse;
 }
@@ -103,12 +93,4 @@ input#filtersubmit {
 }
 input#tagsubmit {
     width: 8em;
-}
-table.newelement {
-    margin-top: 1em;
-    border: 1px solid #ccc;
-}
-table.newelement td {
-    border: none;
-    padding: 0;
 }

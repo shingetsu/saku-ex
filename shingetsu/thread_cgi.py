@@ -1,7 +1,7 @@
 '''Saku Thread CGI methods.
 '''
 #
-# Copyright (c) 2005-2011 shinGETsu Project.
+# Copyright (c) 2005-2012 shinGETsu Project.
 # All rights reserved.
 #
 # Redistribution and use in source and binary forms, with or without
@@ -24,8 +24,6 @@
 # LIABILITY, OR TORT (INCLUDING NEGLIGENCE OR OTHERWISE) ARISING IN ANY WAY
 # OUT OF THE USE OF THIS SOFTWARE, EVEN IF ADVISED OF THE POSSIBILITY OF
 # SUCH DAMAGE.
-#
-# $Id$
 #
 
 import cgi
@@ -231,7 +229,6 @@ class CGI(gateway.CGI):
         self.print_post_form(cache)
         self.print_tags(cache)
         self.remove_file_form(cache, escaped_path)
-        self.stdout.write(self.menubar('bottom', rss))
         self.footer()
 
     def print_record(self, cache, rec, path, str_path):

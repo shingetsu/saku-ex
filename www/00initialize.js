@@ -1,6 +1,5 @@
 /* Initializer.
- * Copyright (C) 2010 shinGETsu Project.
- * $Id$
+ * Copyright (C) 2010,2012 shinGETsu Project.
  */
 
 var shingetsu = (function () {
@@ -40,14 +39,7 @@ var shingetsu = (function () {
         }
     };
 
-    if (document.addEventListener) {
-        document.addEventListener('DOMContentLoaded',
-                                  _initialize, false);
-    } else if (window.attachEvent) {
-        window.attachEvent('onload', _initialize);
-    } else {
-        window.onload = _initialize;
-    }
+    $(_initialize);
 
     return shingetsu;
 })();

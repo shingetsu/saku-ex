@@ -35,11 +35,11 @@
 #end for
 
 #if $isadmin:
-  <p><input type="submit" value="$message['del_file']" /></p>
+  <p><input type="submit" value="$message['del_file']" class="btn" /></p>
   </form>
 #end if
 
 #if $target:
   #set $cols = 'file,stamp,date,path,uri,type,title,records,size,tag,sugtag'
-  <p><a href="$gateway_cgi/csv/$target/$cols">CSV</a></p>
+  <p><a href="$gateway_cgi/csv/$target/$cols" class="btn">CSV</a></p>
 #end if

@@ -2,20 +2,26 @@
  * Copyright (c) 2005-2012 shinGETsu Project.
  * $Id$
  *#
+
 #if $id
-  <aside class="menu" id="$id">
+  <aside class="navbar navbar-fixed-top" id="$id">
 #else
-  <aside class="menu">
+  <aside class="navbar">
 #end if
 
-<a href="$gateway_cgi">$message['top']</a> |
-#for $i in ('changes',)
-  $gateway_link($gateway_cgi, $i) |
-#end for
-#if $isfriend or $isadmin
-  #for $i in ('recent', 'new')
-    $gateway_link($gateway_cgi, $i) |
+<div class="navbar-inner">
+<ul class="nav">
+  <li><a href="$gateway_cgi">$message['top']</a></li>
+  #for $i in ('changes',)
+    <li>$gateway_link($gateway_cgi, $i)</li>
   #end for
-#end if
-<a href="$rss">$message['rss']</a>
+  #if $isfriend or $isadmin
+    #for $i in ('recent', 'new')
+      <li>$gateway_link($gateway_cgi, $i)</li>
+    #end for
+  #end if
+  <li><a href="$rss">$message['rss']</a></li>
+</ul>
+</div>
+
 </aside>

@@ -18,7 +18,14 @@ $cookie
   <link rel="author" href="http://www.shingetsu.info/" />
   <link rel="contents" href="/" />
   <link rel="index" href="/gateway.cgi/index" />
+  <!--[if lt IE 9]>
+      <script type="text/javascript" src="${root_path}html5/html5.js"></script>
+  <![endif]-->
+  <script type="text/javascript" src="${root_path}jquery/jquery.min.js"></script>
+  <script type="text/javascript" src="${root_path}bootstrap/js/bootstrap.min.js"></script>
   <link rel="alternate" type="application/rss+xml" title="RSS" href="$rss" />
+  <link rel="stylesheet" type="text/css" href="${root_path}bootstrap/css/bootstrap.min.css" />
+  <link rel="stylesheet" type="text/css" href="${root_path}bootstrap/css/bootstrap-responsive.min.css" />
 #for $e in $js
   <script type="text/javascript" src="$root_path$e"></script>
 #end for
@@ -29,8 +36,9 @@ $cookie
     shingetsu.uiLang = "$message['lang']";
   //]]></script>
 </head>
-<body>
+<body style="padding-top: 60px">
 $menubar
+<div class="container">
 
 #if hasattr($cgi, 'appli_type') and ($cgi.appli_type == 'thread')
   <h1><a href="$thread_cgi/$str_title">$escape_space($title)</a></h1>
