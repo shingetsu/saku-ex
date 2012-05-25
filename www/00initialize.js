@@ -12,16 +12,14 @@ var shingetsu = (function () {
     };
 
     shingetsu.log = function (arg) {
-        if (! shingetsu.debugMode) {
-            return;
-        } else if (typeof console == 'object') {
+        if (typeof console == 'object') {
             console.log(arg);
-        } else {
+        } else if (shingetsu.debugMode) {
             alert(arg);
         }
     };
 
-    shingetsu.addInitializer = function (func) {
+    shingetsu.initialize = function (func) {
         _initializer[_initializer.length] = func;
     };
 
@@ -34,6 +32,9 @@ var shingetsu = (function () {
                    _initializer[i]();
                 } catch (e) {
                     shingetsu.log(e);
+                    if (shingetsu.debugMode) {
+                        throw e;
+                    }
                 }
             }
         }

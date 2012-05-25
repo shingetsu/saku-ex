@@ -229,7 +229,7 @@ class CGI(gateway.CGI):
         self.print_post_form(cache)
         self.print_tags(cache)
         self.remove_file_form(cache, escaped_path)
-        self.footer()
+        self.footer(menubar=self.menubar('bottom', rss))
 
     def print_record(self, cache, rec, path, str_path):
         thumbnail_size = None

@@ -3,7 +3,7 @@
 // improved by shiroboushi.
 // licenced by public domain.
 
-shingetsu.addInitializer(function()
+shingetsu.initialize(function()
 {
     shingetsu.log('cookie:' + document.cookie);
     if (document.cookie.search(/sg=1/) >= 0)

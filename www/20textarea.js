@@ -1,9 +1,9 @@
 /* -*- coding: utf-8 -*-
  * Text Area Conttoller.
- * Copyright (C) 2006-2010 shinGETsu Project.
+ * Copyright (C) 2006-2012 shinGETsu Project.
  */
 
-shingetsu.addInitializer(function () {
+shingetsu.initialize(function () {
     var msg_spread = 'Spread';
     var msg_reduce = 'Reduce';
     var msg_preview = 'Preview';

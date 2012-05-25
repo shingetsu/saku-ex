@@ -253,8 +253,8 @@ class CGI(basecgi.CGI):
         }
         self.stdout.write(self.template('header', var))
 
-    def footer(self):
-        self.stdout.write(self.template('footer'))
+    def footer(self, menubar=None):
+        self.stdout.write(self.template('footer', {'menubar': menubar}))
 
     def localtime(self, stamp=0):
         """Return YYYY-mm-dd HH:MM."""

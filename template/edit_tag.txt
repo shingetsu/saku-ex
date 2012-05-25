@@ -23,6 +23,7 @@
   </p>
   <div class="form-actions">
     <input type="submit" value="$message['edit_tag']" class="btn btn-primary"/>
+    <a href="javascript:history.back()" class="btn">$message['cancel']</a>
   </div>
 </div></form>
 

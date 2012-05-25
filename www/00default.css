@@ -76,11 +76,11 @@ p.tags, p.sugtags {
     margin-bottom: 0;
     margin-top: 0;
 }
-form#filterform, form#filterform p {
+form#filterform {
     margin-bottom: 0;
     padding-bottom: 0;
 }
-form#tagform, form#tagform p {
+form#tagform {
     margin-top: 0;
     padding-top: 0;
 }

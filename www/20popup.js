@@ -1,7 +1,6 @@
 /* Popup.
- * Copyright (C) 2005-2010 shinGETsu Project.
+ * Copyright (C) 2005-2012 shinGETsu Project.
  * This is made referring to Kindan-no Tubo.
- * $Id$
  */
 
 shingetsu.plugins.Coordinate = function (e) {
@@ -79,7 +78,7 @@ shingetsu.plugins.showPopup = function (coordinate, objects) {
     return pop;
 }
 
-shingetsu.addInitializer(function () {
+shingetsu.initialize(function () {
     var div = document.createElement('div');
     div.id = 'popup';
     var body = document.getElementsByTagName('body')[0];

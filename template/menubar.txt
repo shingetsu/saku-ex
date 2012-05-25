@@ -4,7 +4,7 @@
  *#
 
 #if $id
-  <aside class="navbar navbar-fixed-top" id="$id">
+  <aside class="navbar" id="$id">
 #else
   <aside class="navbar">
 #end if
