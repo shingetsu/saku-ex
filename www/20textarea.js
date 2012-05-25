@@ -1,14 +1,9 @@
 /* -*- coding: utf-8 -*-
-  * Text Area Conttoller.
+ * Text Area Conttoller.
  * Copyright (C) 2006-2010 shinGETsu Project.
- * $Id$
  */
 
 shingetsu.addInitializer(function () {
-    var form = document.getElementById('postarticle');
-    if (! form) {
-        return;
-    }
     var msg_spread = 'Spread';
     var msg_reduce = 'Reduce';
     var msg_preview = 'Preview';
@@ -20,40 +15,44 @@ shingetsu.addInitializer(function () {
         msg_edit = '編集再開';
     }
 
-    function addEvent(obj, func) {
-        if (obj.addEventListener) {
-            obj.addEventListener('click', func, false);
-        } else if (a.attachEvent) {
-            obj.attachEvent('onclick', func);
+    var textArea = $('#body');
+    var textAreaContainer = textArea.parent();
+    var buttonContainer = $('<span>');
+    textArea.after(buttonContainer);
+
+    function TextAreaController(textArea, button) {
+        this._textArea = textArea;
+        this._button = button;
+        this._isBigSize = false;
+    }
+
+    TextAreaController.prototype.toggle = function (event) {
+        event.preventDefault();
+        if (this._isBigSize) {
+            this._reduce();
+        } else {
+            this._spread();
         }
-    }
+    };
 
-    function removeEvent(obj, func) {
-        if (obj.removeEventListener) {
-            obj.removeEventListener('click', func, false);
-        } else if (a.detachEvent) {
-            obj.detachEvent('onclick', func);
-        }
-    }
+    TextAreaController.prototype._spread = function () {
+        this._textArea.attr('rows', 30).css('width', '90%');
+        this._button.text(msg_reduce);
+        this._isBigSize = true;
+    };
 
-    function spreadMsg() {
-        form.body.rows = 30;
-        form.body.style.width = '90%';
-        var a = document.getElementById('textsize');
-        a.innerHTML = '[' + msg_reduce + ']';
-        removeEvent(a, spreadMsg);
-        addEvent(a, reduceMsg);
-    }
+    TextAreaController.prototype._reduce = function () {
+        this._textArea.attr('rows', 7).attr('cols', '70').css('width', '');
+        this._button.text(msg_spread);
+        this._isBigSize = false;
+    };
 
-    function reduceMsg() {
-        form.body.style.width = '';
-        form.body.rows = 5;
-        form.body.cols = 70;
-        var a = document.getElementById('textsize');
-        a.innerHTML = '[' + msg_spread + ']';
-        removeEvent(a, reduceMsg);
-        addEvent(a, spreadMsg);
-    }
+    var spreadReduceButton = $('<button>');
+    buttonContainer.append(spreadReduceButton);
+    spreadReduceButton.text(msg_spread);
+
+    var textAreaController = new TextAreaController(textArea, spreadReduceButton);
+    spreadReduceButton.click(function (e) { textAreaController.toggle(e) } );
 
     function html_format(message) {
         var e = document.all? 'null': 'event';
@@ -84,11 +83,32 @@ shingetsu.addInitializer(function () {
         return message;
     }
 
+
+    function PreviewController(textArea, button) {
+        this._textArea = textArea;
+        this._button = button;
+        this._isPreview = false;
+    }
+
+    PreviewController.prototype.toggle = function (event) {
+        event.preventDefault();
+        if (this._isPreview) {
+            this._hide();
+        } else {
+            this._show();
+        }
+    };
+
+    PreviewController.prototype._show = function () {
+        spreadReduceButton.hide();
+    };
+    return;
+
+
     function showPreview() {
         var a = document.getElementById('previewctrl');
         var area = document.getElementById('preview');
         var message = form.body.value;
-        var textsize = document.getElementById('textsize');
         var ref = document.getElementById('resreferrer');
         message = html_format(message);
         form.body.style.display = 'none';
