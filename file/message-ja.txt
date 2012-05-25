@@ -40,6 +40,7 @@ regexp<>正規表現
 tag<>タグ
 string<>文字列
 tag_desc<>スペースで区切ってタグを入力してください。&lt;&gt;&amp;は使えません。
+show<>表示
 
 # post
 send<>他のノードにも通知する
@@ -56,7 +57,9 @@ post<>投稿
 del_file<>掲示板の削除
 del_record<>書き込みの削除
 remove<>削除
+cancel<>キャンセル
 search_new_file<>新しい掲示板を作るときに検索する
+create<>新規作成
 
 # thread
 anonymous<>名無しさん

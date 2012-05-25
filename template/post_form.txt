@@ -19,7 +19,7 @@
   <div class="control-group">
     <label class="control-label" for="body">$message['comment']</label>
     <div class="controls">
-      <textarea rows="5" cols="70" name="body" id="body"></textarea>
+      <textarea rows="5" cols="70" name="body" id="body" class="input-xxlarge"></textarea>
       <div class="help-block"><a href="$gateway_cgi/motd">$message['agreement']</a></div>
     </div>
   </div>

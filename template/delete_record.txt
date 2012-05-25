@@ -1,9 +1,8 @@
+##
 ## Saku Gateway Delete Record Page.
 ## Copyright (c) 2005-2012 shinGETsu Project.
 ##
-<form method="post" action="$admin_cgi" class="form-horizontal"><p>
-  <p>$message['del_record_q']
-  <input type="submit" value="$message['remove']" class="btn btn-danger" />
+<form method="post" action="$admin_cgi" class="form-horizontal"><div class="well">
   <input type="hidden" name="cmd" value="xrdel" />
   <input type="hidden" name="file" value="$datfile" />
   <input type="hidden" name="sid" value="$sid" />
@@ -30,6 +29,11 @@
       </div>
     </div>
   #end if
+  <div class="form-actions">
+    <input type="submit" value="$message['remove']" class="btn btn-danger" />
+    <a href="javascript:history.back();" class="btn">$message['cancel']</a>
+  </div>
+  </div>
 
 #for $rec in $records
   #if $rec.exists()

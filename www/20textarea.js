@@ -42,17 +42,18 @@ shingetsu.addInitializer(function () {
     };
 
     TextAreaController.prototype._reduce = function () {
-        this._textArea.attr('rows', 7).attr('cols', '70').css('width', '');
+        this._textArea.attr('rows', 7).css('width', '');
         this._button.text(msg_spread);
         this._isBigSize = false;
     };
 
-    var spreadReduceButton = $('<button>');
-    buttonContainer.append(spreadReduceButton);
-    spreadReduceButton.text(msg_spread);
+    var sizeButton = $('<button>');
+    buttonContainer.append(sizeButton);
+    sizeButton.text(msg_spread);
 
-    var textAreaController = new TextAreaController(textArea, spreadReduceButton);
-    spreadReduceButton.click(function (e) { textAreaController.toggle(e) } );
+    var textAreaController = new TextAreaController(textArea, sizeButton);
+    sizeButton.click(function (e) { textAreaController.toggle(e) } );
+
 
     function html_format(message) {
         var e = document.all? 'null': 'event';
@@ -84,8 +85,10 @@ shingetsu.addInitializer(function () {
     }
 
 
-    function PreviewController(textArea, button) {
+    function PreviewController(textArea, previewArea, button, textAreaFriends) {
         this._textArea = textArea;
+        this._previewArea = previewArea;
+        this._textAreaFriends = textAreaFriends;
         this._button = button;
         this._isPreview = false;
     }
@@ -100,71 +103,32 @@ shingetsu.addInitializer(function () {
     };
 
     PreviewController.prototype._show = function () {
-        spreadReduceButton.hide();
+        $.each(this._textAreaFriends, function (i, v) { v.hide() });
+        this._textArea.hide();
+        var message = html_format(this._textArea.val());
+        this._previewArea.html(message).show();
+        console.log(this._previewArea);
+        this._button.text(msg_edit);
+        this._isPreview = true;
     };
-    return;
 
+    PreviewController.prototype._hide = function () {
+        $.each(this._textAreaFriends, function (i, v) { v.show() });
+        this._textArea.show();
+        this._previewArea.hide();
+        this._button.text(msg_preview);
+        this._isPreview = false;
+    };
 
-    function showPreview() {
-        var a = document.getElementById('previewctrl');
-        var area = document.getElementById('preview');
-        var message = form.body.value;
-        var ref = document.getElementById('resreferrer');
-        message = html_format(message);
-        form.body.style.display = 'none';
-        textsize.style.display = 'none';
-        if (ref) {
-            ref.style.display = 'none';
-        }
-        if (document.all) {
-            area.innerHTML = '<pre>' + message + '</pre>'
-        } else {
-            area.innerHTML = '<p>' + message + '</p>'
-        }
-        area.style.display = 'block';
-        a.innerHTML = '[' + msg_edit + ']';
-        removeEvent(a, showPreview);
-        addEvent(a, hidePreview);
-    }
+    var previewButton = $('<button>');
+    buttonContainer.append(previewButton);
+    previewButton.text(msg_preview);
 
-    function hidePreview() {
-        var a = document.getElementById('previewctrl');
-        var area = document.getElementById('preview');
-        var textsize = document.getElementById('textsize');
-        var ref = document.getElementById('resreferrer');
-        area.style.display = 'none';
-        form.body.style.display = 'inline';
-        textsize.style.display = 'inline';
-        if (ref) {
-            ref.style.display = 'inline';
-        }
-        a.innerHTML = '[' + msg_preview + ']';
-        removeEvent(a, hidePreview);
-        addEvent(a, showPreview);
-    }
+    var previewArea = $('<pre>').hide();
+    previewArea.id = 'preview';
+    buttonContainer.after(previewArea);
+    var textAreaFriends = [$('#resreferrer'), sizeButton];
 
-    var p = form.getElementsByTagName('p')[0];
-    var br = p.getElementsByTagName('br')[2];
-
-    // Preview
-    var span = document.createElement('span');
-    span.innerHTML = ' <a href="" id="previewctrl" name="previewctrl"' +
-                     ' onclick="return false;" onkeypress="return false;">[' +
-                     msg_preview  + ']</a>'
-    p.insertBefore(span, br);
-    var preview = document.createElement('div');
-    preview.id = 'preview';
-    preview.style.display = 'none';
-    form.appendChild(preview);
-    var a = document.getElementById('previewctrl');
-    addEvent(a, showPreview);
-
-    // Text area size
-    span = document.createElement('span');
-    span.innerHTML = ' <a href="" id="textsize" name="textsize"' +
-                     ' onclick="return false;" onkeypress="return false;">[' +
-                     msg_spread  + ']</a>'
-    p.insertBefore(span, br);
-    a = document.getElementById('textsize');
-    addEvent(a, spreadMsg);
+    var previewController = new PreviewController(textArea, previewArea, previewButton, textAreaFriends);
+    previewButton.click(function (e) { previewController.toggle(e) } );
 });

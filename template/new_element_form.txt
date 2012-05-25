@@ -2,12 +2,12 @@
 ## Saku Gateway New Element Form.
 ## Copyright (c) 2005-2012 shinGETsu Project.
 ##
-<form method="post" action="$cginame" class="well form-horizontal">
+<div class="row">
+<form method="post" action="$cginame" class="well form-horizontal span6">
   <input type="hidden" name="cmd" value="new" />
   <input type="hidden" name="file" value="$datfile" />
   <input type="hidden" value="thread" name="type" />
 
-  <input type="submit" value="$message['new']" class="btn btn-primary" />
   <div class="control-group">
     <label class="control-label" for="link">$message['title']</label>
     <div class="controls"><input name="link" maxlength="$config.title_limit" value="" id="link" /></div>
@@ -28,4 +28,9 @@
     </div>
   </div>
   #end if
+
+  <div class="form-actions">
+    <input type="submit" value="$message['create']" class="btn btn-primary" />
+  </div>
 </form>
+</div>

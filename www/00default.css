@@ -55,10 +55,6 @@ td {
     margin: 5px;
     white-space: pre;
 }
-#preview p, #preview pre {
-    margin: 0;
-    padding: 0;
-}
 ul.topmenu li { 
     display: inline;
     margin-left: 1ex;
@@ -87,10 +83,4 @@ form#filterform, form#filterform p {
 form#tagform, form#tagform p {
     margin-top: 0;
     padding-top: 0;
-}
-input#filtersubmit {
-    width: 8em;
-}
-input#tagsubmit {
-    width: 8em;
 }
