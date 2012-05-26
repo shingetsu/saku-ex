@@ -1,10 +1,10 @@
-<VirtualHost *>
+<VirtualHost *:80>
     ServerAdmin webmaster@shingetsu.info
     DocumentRoot /srv/www/bbs.shingetsu.info
     ServerName bbs.shingetsu.info
-    ServerAlias bbs.shingetsu.info, fuktommy.ddo.jp
-    ErrorLog /var/log/httpd/bbs.shingetsu.info.error.log
-    CustomLog /var/log/httpd/bbs.shingetsu.info.access.log combined
+    ServerAlias bbs.shingetsu.info
+    ErrorLog /var/log/apache2/bbs.shingetsu.info.error.log
+    CustomLog /var/log/apache2/bbs.shingetsu.info.access.log combined
     RewriteMap escape int:escape
 
     <Directory "/srv/www/bbs.shingetsu.info">
@@ -16,8 +16,10 @@
         RewriteRule server.cgi - [F]
         RewriteRule ^([0-9][^/]*).js$ /STATIC/$1.js
         RewriteRule ^([0-9][^/]*).css$ /STATIC/$1.css
+        RewriteRule ^(bootstrap|html5js|jquery)/(.*) /STATIC/$1/$2
         RewriteRule ^favicon.ico$ /STATIC/favicon.ico
         RewriteRule rss1.xsl /STATIC/rss1.xsl
+        RewriteRule ^mobile.cgi / [R]
         RewriteCond %{QUERY_STRING} cmd=post
             RewriteRule . /cgi-bin/dummy.php?
         RewriteCond %{REQUEST_METHOD} POST
@@ -26,12 +28,12 @@
         RewriteCond %{REQUEST_METHOD} POST
             RewriteRule ^thread.cgi/. /cgi-bin/dummy.php
         RewriteRule ^gw$ /cgi-bin/gw.cgi
-        RewriteRule ^thread.cgi/(thread_[0-9A-F]*)/(s?[0-9a-f]*)/([0-9]*).(.*) \
+        RewriteRule ^thread.cgi/(thread_[0-9A-F]*)/([0-9a-f]*)/(s?[0-9]*).(.*) \
                     /CACHE/$1/attach/$3_$2.$4
         <IfModule mod_proxy.c>
-            #RewriteRule ^$ http://59.106.27.44:8000/gateway.cgi [P]
+            #RewriteRule ^$ http://bbs.shingetsu.info:8000/gateway.cgi [P]
             RewriteRule ^(gateway|thread).cgi(.*) \
-                http://59.106.27.44:8000/$1.cgi${escape:$2} [P,NE]
+                http://bbs.shingetsu.info:8000/$1.cgi${escape:$2} [P,NE]
         </IfModule>
         RewriteRule ^archive/(.*) http://archive.shingetsu.info/$1 [L]
     </Directory>
@@ -40,6 +42,7 @@
     <Directory "/srv/www/bbs.shingetsu.info/cgi-bin">
         Options +ExecCGI
         AddHandler php5-script .php
+        AddHandler cgi-script .cgi
     </Directory>
 
     Alias /STATIC/ /usr/local/share/saku/www/
@@ -56,7 +59,7 @@
     </Directory>
 </VirtualHost>
 
-<VirtualHost *>
+<VirtualHost *:80>
     ServerAdmin webmaster@shingetsu.info
     DocumentRoot /srv/www/bbs.shingetsu.info
     ServerName node.shingetsu.info

@@ -1,14 +1,12 @@
 #!/usr/bin/env python
-# Copyright (C) 2005-2011 shinGETsu Project.
-#
-# $Id$
+# Copyright (C) 2005-2012 shinGETsu Project.
 #
 
 import re
 import os
 from stat import S_IRUSR, S_IWUSR, S_IXUSR, S_IXGRP, S_IRGRP, S_IROTH, S_IXOTH
 from glob import glob
-from shutil import copy
+from shutil import copy, copytree
 from distutils.core import setup
 
 import shingetsu.config
@@ -45,6 +43,9 @@ def setup_data_files():
     globcopy("www/*.ico", www_dir)
     globcopy("www/*.js", www_dir)
     globcopy("www/*.xsl", www_dir)
+    copytree("www/bootstrap", os.path.join(www_dir, 'bootstrap'))
+    copytree("www/html5js", os.path.join(www_dir, 'html5js'))
+    copytree("www/jquery", os.path.join(www_dir, 'jquery'))
 
     globcopy("README*", doc_dir)
     globcopy("file/changelog*", doc_dir)
