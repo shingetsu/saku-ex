@@ -52,6 +52,7 @@ suffix<>Suffix
 error<>Error in timestamp
 comment<>Comment
 post<>POST
+post_body<>Post text
 
 # admin
 del_file<>DELETE BBS

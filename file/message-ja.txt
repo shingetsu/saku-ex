@@ -52,6 +52,7 @@ suffix<>拡張子
 error<>書き込み時刻に誤差
 comment<>コメント
 post<>投稿
+post_body<>本文
 
 # admin
 del_file<>掲示板の削除

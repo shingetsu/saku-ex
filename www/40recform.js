@@ -5,13 +5,9 @@
 
 shingetsu.initialize(function()
 {
-    shingetsu.log('cookie:' + document.cookie);
     if (document.cookie.search(/sg=1/) >= 0)
     {
         var form = parse();
-        shingetsu.log('load');
-        shingetsu.log(typeof form['dopost']);
-        shingetsu.log(typeof form['error']);
         if(form['dopost'] == 'true')
         {
             document.forms["postarticle"].elements["dopost"].checked = true;
@@ -45,7 +41,6 @@ shingetsu.initialize(function()
             tmp[0] = tmp[0].replace(new RegExp(' ', 'g'), '');    // remove space in key.
             retd[tmp[0]] = decodeURI(tmp[1]);
         }
-        shingetsu.log(retd);
         return retd;
     }
 
@@ -56,9 +51,6 @@ shingetsu.initialize(function()
         var sign = document.forms["postarticle"].elements["passwd"].value;
         var dopost = document.forms["postarticle"].elements["dopost"].checked + '';
         var error = document.forms["postarticle"].elements["error"].checked + '';
-        shingetsu.log('save');
-        shingetsu.log(dopost);
-        shingetsu.log(error);
         name = encodeURI(name);
         mail = encodeURI(mail);
         sign = encodeURI(sign);

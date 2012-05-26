@@ -17,34 +17,17 @@
   <input type="hidden" name="file" value="$cache.datfile" />
 
   <div class="control-group">
-    <label class="control-label" for="body">$message['comment']</label>
+    <label class="control-label" for="body">$message['post_body']</label>
     <div class="controls">
-      <textarea rows="5" cols="70" name="body" id="body" class="input-xxlarge"></textarea>
+      <textarea rows="5" name="body" id="body" class="input-xxlarge"></textarea>
       <div class="help-block"><a href="$gateway_cgi/motd" target="_blank">$message['agreement']</a></div>
     </div>
   </div>
 
   <div class="control-group">
-    <label class="control-label" for="name">$message['name']</label>
-    <div class="controls"><input name="name" value="" id="name" /></div>
-  </div>
-
-  <div class="control-group">
-    <label class="control-label" for="mail">$message['mail']</label>
-    <div class="controls"><input name="mail" value="" id="mail" /></div>
-  </div>
-
-  #if $isadmin
-    <div class="control-group">
-      <label class="control-label" for="passwd">$message['signature']</label>
-      <div class="controls"><input type="password" name="passwd" value="" id="passwd" /></div>
-    </div>
-  #end if
-
-  <div class="control-group">
     <label class="control-label" for="attach">$message['attach']</label>
     <div class="controls">
-      <input type="file" name="attach" size="19" value="" id="attach" />
+      <input type="file" name="attach" size="19" value="" id="attach" class="input-file" />
       <div class="help-inline">$message['limit']: $limit$message['kb']</div>
     </div>
   </div>
@@ -61,8 +44,25 @@
     </div>
   </div>
 
+  <div class="control-group post-advanced">
+    <label class="control-label" for="name">$message['name']</label>
+    <div class="controls"><input name="name" value="" id="name" /></div>
+  </div>
+
+  <div class="control-group post-advanced">
+    <label class="control-label" for="mail">$message['mail']</label>
+    <div class="controls"><input name="mail" value="" id="mail" /></div>
+  </div>
+
+  #if $isadmin
+    <div class="control-group post-advanced">
+      <label class="control-label" for="passwd">$message['signature']</label>
+      <div class="controls"><input type="password" name="passwd" value="" id="passwd" /></div>
+    </div>
+  #end if
+
   #if $isadmin or $isfriend
-    <div class="control-group">
+    <div class="control-group post-advanced">
       <label class="control-label" for="dopost">$message['send']</label>
       <div class="controls"><label>
         <input type="checkbox" id="dopost" name="dopost" value="dopost" checked="checked" />
@@ -73,7 +73,7 @@
     <input type="hidden" name="dopost" value="dopost" />
   #end if
 
-  <div class="control-group">
+  <div class="control-group post-advanced">
     <label class="control-label" for="error">$message['error']</label>
     <div class="controls"><label>
       <input type="checkbox" id="error" name="error" value="error" checked="checked" />

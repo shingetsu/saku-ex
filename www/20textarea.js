@@ -17,8 +17,9 @@ shingetsu.initialize(function () {
 
     var textArea = $('#body');
     var textAreaContainer = textArea.parent();
-    var buttonContainer = $('<span>');
-    textArea.after(buttonContainer);
+    var buttonContainer = $('<div>');
+    textArea.before(buttonContainer);
+    buttonContainer.addClass('post-advanced');
 
     function TextAreaController(textArea, button) {
         this._textArea = textArea;
@@ -49,7 +50,8 @@ shingetsu.initialize(function () {
 
     var sizeButton = $('<button>');
     buttonContainer.append(sizeButton);
-    sizeButton.text(msg_spread);
+    sizeButton.text(msg_spread).addClass('btn');
+    
 
     var textAreaController = new TextAreaController(textArea, sizeButton);
     sizeButton.click(function (e) { textAreaController.toggle(e) } );
@@ -122,7 +124,7 @@ shingetsu.initialize(function () {
 
     var previewButton = $('<button>');
     buttonContainer.append(previewButton);
-    previewButton.text(msg_preview);
+    previewButton.text(msg_preview).addClass('btn');
 
     var previewArea = $('<pre>').hide();
     previewArea.id = 'preview';
