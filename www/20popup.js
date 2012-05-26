@@ -24,10 +24,10 @@ shingetsu.plugins.showPopup = function (coordinate, objects) {
 
     var width = popup.width();
     var height = popup.height();
-    var posX = coordinate.x + 20;
-    var posY = Math.max(0, coordinate.y - height);
-    popup.css('left', posX + $(body).scrollLeft())
-         .css('top', posY + $(body).scrollTop())
+    var posX = Math.max($(document).scrollLeft(), coordinate.x + 20);
+    var posY = Math.max($(document).scrollTop(), coordinate.y - height);
+    popup.css('left', posX + 'px')
+         .css('top', posY + 'px')
          .css('paddingLeft', '1em')
          .css('paddingRight', '1em')
          .show();
