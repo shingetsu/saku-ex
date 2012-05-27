@@ -16,6 +16,23 @@
   <input type="hidden" name="cmd" value="post" />
   <input type="hidden" name="file" value="$cache.datfile" />
 
+  <div class="control-group post-advanced">
+    <label class="control-label" for="name">$message['name']</label>
+    <div class="controls"><input name="name" value="" id="name" /></div>
+  </div>
+
+  <div class="control-group post-advanced">
+    <label class="control-label" for="mail">$message['mail']</label>
+    <div class="controls"><input name="mail" value="" id="mail" /></div>
+  </div>
+
+  #if $isadmin
+    <div class="control-group post-advanced">
+      <label class="control-label" for="passwd">$message['signature']</label>
+      <div class="controls"><input type="password" name="passwd" value="" id="passwd" /></div>
+    </div>
+  #end if
+
   <div class="control-group">
     <label class="control-label" for="body">$message['post_body']</label>
     <div class="controls">
@@ -45,33 +62,12 @@
   </div>
 
   <div class="control-group post-advanced">
-    <label class="control-label" for="name">$message['name']</label>
-    <div class="controls"><input name="name" value="" id="name" /></div>
+    <label class="control-label" for="dopost">$message['send']</label>
+    <div class="controls"><label>
+      <input type="checkbox" id="dopost" name="dopost" value="dopost" checked="checked" />
+      <div class="help-inline">$message['desc_send']</div>
+    </label></div>
   </div>
-
-  <div class="control-group post-advanced">
-    <label class="control-label" for="mail">$message['mail']</label>
-    <div class="controls"><input name="mail" value="" id="mail" /></div>
-  </div>
-
-  #if $isadmin
-    <div class="control-group post-advanced">
-      <label class="control-label" for="passwd">$message['signature']</label>
-      <div class="controls"><input type="password" name="passwd" value="" id="passwd" /></div>
-    </div>
-  #end if
-
-  #if $isadmin or $isfriend
-    <div class="control-group post-advanced">
-      <label class="control-label" for="dopost">$message['send']</label>
-      <div class="controls"><label>
-        <input type="checkbox" id="dopost" name="dopost" value="dopost" checked="checked" />
-        <div class="help-inline">$message['desc_send']</div>
-      </label></div>
-    </div>
-  #else
-    <input type="hidden" name="dopost" value="dopost" />
-  #end if
 
   <div class="control-group post-advanced">
     <label class="control-label" for="error">$message['error']</label>
