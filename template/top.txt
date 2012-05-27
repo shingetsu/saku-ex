@@ -22,7 +22,7 @@
 </ul>
 
 #if (not $cachelist) and ($isfriend or $isadmin)
-  <p><em>$gateway_link($gateway_cgi, 'recent')</em></p>
+  <p><em style="font-size:x-large">$gateway_link($gateway_cgi, 'recent')</em></p>
 #end if
 
 <h2>$message['recent_changes']</h2>

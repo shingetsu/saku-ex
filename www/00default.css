@@ -4,18 +4,9 @@
 body {
     background-color: #fff;
 }
-ul {
-    list-style: none;
-}
 h1, h1 a {
     color: #00e;
     text-decoration: none;
-}
-em {
-    font-size: x-large;
-}
-strong {
-    font-size: x-large;
 }
 dt {
     background-color: #ccf;
@@ -38,10 +29,7 @@ a:hover {
 .sign {
     color: red;
 }
-table {
-    border-collapse: collapse;
-}
-td {
+table.solid td {
     border: 1px solid #ccc; 
     padding: 5px 5px 5px 1em;
     text-align: right;
