@@ -1,5 +1,5 @@
 朔(Extreme版) - P2P匿名掲示板「新月」のクローン
-============--=================================
+===============================================
 
 Authors
 -------
@@ -88,9 +88,9 @@ Sakuは Shingetsu Another Keen Utility の略です。
    デフォルトでは /usr/local/etc/saku に配置するような設定になっています。
    saku.ini は次の順で読み込まれ、後で設定したものが優先されます。
 
-    * /usr/local/etc/saku/saku.ini
-    * /etc/saku/saku.ini
-    * ~/.saku/saku.ini
+        * /usr/local/etc/saku/saku.ini
+        * /etc/saku/saku.ini
+        * ~/.saku/saku.ini
 
 7. 設定ファイルと連動するようにユーザとディレクトリを準備してください。
 8. 次のコマンドで起動します。

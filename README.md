@@ -26,8 +26,8 @@ WebSite
 * http://www.shingetsu.info/
 
 
-Saku stands for ``Shingetsu Another Keen Utility''.
-Both the word ``saku'' and ``shingetsu'' mean the new moon in Japanese.
+Saku stands for "Shingetsu Another Keen Utility".
+Both the word "saku" and "shingetsu" mean the new moon in Japanese.
 
 Agreement
 ---------
@@ -83,14 +83,15 @@ Usage Saku with install
 
         # cp saku.init /usr/local/etc/init.d/saku
         # cp sample.ini /usr/local/etc/saku/saku.ini
+        
    and so on.
    The paths of config files are set in saku.ini,
    they are in /usr/local/etc/saku by defaults.
    saku.ini are loaded from following paths and the later settings have a priority.
 
-     * /usr/local/etc/saku/saku.ini
-     * /etc/saku/saku.ini
-     * ~/.saku/saku.ini
+        * /usr/local/etc/saku/saku.ini
+        * /etc/saku/saku.ini
+        * ~/.saku/saku.ini
 
 5. Setup user and directories refering config files.
 6. Start with
