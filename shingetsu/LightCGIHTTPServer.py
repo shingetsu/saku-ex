@@ -1,7 +1,7 @@
 """Tiny HTTP server supporting threading CGI.
 """
 #
-# Copyright (c) 2005,2006 shinGETsu Project.
+# Copyright (c) 2005-2012 shinGETsu Project.
 # All rights reserved.
 #
 # Redistribution and use in source and binary forms, with or without
@@ -25,13 +25,11 @@
 # OUT OF THE USE OF THIS SOFTWARE, EVEN IF ADVISED OF THE POSSIBILITY OF
 # SUCH DAMAGE.
 #
-# $Id$
-#
 
 import os
 import re
 import sys
-import urllib
+import urllib2
 import BaseHTTPServer
 import CGIHTTPServer
 import SocketServer
@@ -160,7 +158,7 @@ class HTTPRequestHandler(CGIHTTPServer.CGIHTTPRequestHandler):
         env['SERVER_PROTOCOL'] = self.protocol_version
         env['SERVER_PORT'] = str(self.server.server_port)
         env['REQUEST_METHOD'] = self.command
-        uqrest = urllib.unquote(rest)
+        uqrest = urllib2.unquote(rest)
         env['PATH_INFO'] = uqrest
         env['PATH_TRANSLATED'] = self.translate_path(uqrest)
         env['SCRIPT_NAME'] = scriptname

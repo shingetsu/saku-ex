@@ -5,7 +5,7 @@
 Set server_name, proxy_destination and apache_docroot in saku.ini.
 '''
 #
-# Copyright (c) 2006-2011 shinGETsu Project.
+# Copyright (c) 2006-2012 shinGETsu Project.
 # All rights reserved.
 #
 # Redistribution and use in source and binary forms, with or without
@@ -29,13 +29,11 @@ Set server_name, proxy_destination and apache_docroot in saku.ini.
 # OUT OF THE USE OF THIS SOFTWARE, EVEN IF ADVISED OF THE POSSIBILITY OF
 # SUCH DAMAGE.
 #
-# $Id$
-#
 
 import os
 import sys
 import socket
-import urllib
+import urllib2
 from shutil import copy
 
 import shingetsu.config
@@ -50,23 +48,23 @@ destination = 'http://' + shingetsu.config.proxy_destination
 docroot = shingetsu.config.apache_docroot
 sep = shingetsu.config.query_separator
 
-class AppURLopener(urllib.URLopener):
-    def __init__(self, *args):
-        urllib.URLopener.__init__(self, *args)
-        self.addheader("Accept-Language", "ja;q=1.0, en;q=0.5")
-urllib._urlopener = AppURLopener()
+
+def urlopen(url):
+    req = urllib2.Request(url)
+    req.add_header('Accept-Language', 'ja;q=1.0, en;q=0.5')
+    return urllib2.urlopen(req)
 
 def get_rss():
-    rssfile = urllib.urlopen('%s%s%srss' % (destination,
-                                            shingetsu.config.gateway,
-                                            sep))
+    rssfile = urlopen('%s%s%srss' % (destination,
+                                     shingetsu.config.gateway,
+                                     sep))
     date = rssfile.info().getheader("last-modified", "")
     rss = rssfile.read()
     rssfile.close()
     return date, rss
 
 def get_html(src, dst):
-    htmlfile = urllib.urlopen(src)
+    htmlfile = urlopen(src)
     html = htmlfile.read()
     htmlfile.close()
     f = file(os.path.join(docroot, dst), 'w')

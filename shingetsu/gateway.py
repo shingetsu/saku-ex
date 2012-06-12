@@ -29,7 +29,7 @@
 import cgi
 import os
 import re
-import urllib
+import urllib2
 import sys
 import time
 
@@ -61,7 +61,7 @@ class Message(dict):
                 else:
                     buf = line.split("<>")
                     if len(buf) == 2:
-                        buf[1] = urllib.unquote(buf[1])
+                        buf[1] = urllib2.unquote(buf[1])
                         self[buf[0]] = buf[1]
             f.close()
         except IOError:

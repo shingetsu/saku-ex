@@ -28,11 +28,10 @@
 
 import gc
 import re
-import urllib
 import sys
 import time
 from threading import Thread
-from urllib import urlopen
+from urllib2 import urlopen
 
 import config
 import tiedobj
@@ -48,8 +47,7 @@ class Client(Thread):
     def run(self):
         try:
             con = urlopen("http://localhost:%d%s" %
-                          (config.port, config.client),
-                          proxies={})
+                          (config.port, config.client))
             con.close()
         except IOError:
             pass
