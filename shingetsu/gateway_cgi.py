@@ -1,7 +1,7 @@
 """Gateway CGI methods.
 """
 #
-# Copyright (c) 2005-2011 shinGETsu Project.
+# Copyright (c) 2005-2012 shinGETsu Project.
 # All rights reserved.
 #
 # Redistribution and use in source and binary forms, with or without
@@ -25,8 +25,6 @@
 # OUT OF THE USE OF THIS SOFTWARE, EVEN IF ADVISED OF THE POSSIBILITY OF
 # SUCH DAMAGE.
 #
-# $Id$
-#
 
 import re
 import cgi
@@ -38,8 +36,6 @@ import gateway
 from cache import *
 from tag import UserTagList
 from rss import RSS, make_rss1
-
-__version__ = "$Revision$"
 
 
 class CGI(gateway.CGI):
@@ -118,7 +114,7 @@ class CGI(gateway.CGI):
     def print_title(self):
         message = self.message
         cachelist = CacheList()
-        cachelist.sort(lambda a,b: cmp(b.valid_stamp, a.valid_stamp))
+        cachelist.sort(key=lambda x: x.valid_stamp, reverse=True)
         now = int(time())
         output_cachelist = []
         for cache in cachelist:
@@ -143,7 +139,7 @@ class CGI(gateway.CGI):
         self.header(title)
         self.print_paragraph(self.message['desc_index'])
         cachelist = CacheList()
-        cachelist.sort(lambda a,b: cmp(a.datfile, b.datfile))
+        cachelist.sort(key=lambda x: x.datfile)
         self.print_index_list(cachelist, "index")
 
     def print_changes(self):
@@ -155,13 +151,13 @@ class CGI(gateway.CGI):
         self.header(title)
         self.print_paragraph(self.message['desc_changes'])
         cachelist = CacheList()
-        cachelist.sort(lambda a,b: cmp(b.valid_stamp, a.valid_stamp))
+        cachelist.sort(key=lambda x: x.valid_stamp, reverse=True)
         self.print_index_list(cachelist, "changes")
 
     def make_recent_cachelist(self):
         """Make dummy cachelist from recentlist."""
         recentlist = RecentList()[:]
-        recentlist.sort(lambda a,b: cmp(b.stamp, a.stamp))
+        recentlist.sort(key=lambda x: x.stamp, reverse=True)
         cachelist = []
         check = []
         for rec in recentlist:
@@ -196,7 +192,7 @@ class CGI(gateway.CGI):
             cachelist = CacheList()
         elif target == "changes":
             cachelist = CacheList()
-            cachelist.sort(lambda a,b: cmp(b.valid_stamp, a.valid_stamp))
+            cachelist.sort(key=lambda x: x.valid_stamp, reverse=True)
         elif target == "recent":
             if (not self.isfriend) and (not self.isadmin):
                 self.print403()

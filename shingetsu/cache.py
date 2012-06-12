@@ -956,8 +956,8 @@ class UpdateList:
     def __iter__(self):
         return iter(self.tiedlist)
 
-    def __getslice__(self, i, j):
-        return self.tiedlist[i:j]
+    def __getitem__(self, i):
+        return self.tiedlist[i]
 
     def append(self, rec):
         rec = VirtualRecord(datfile=rec.datfile, idstr=rec.idstr)

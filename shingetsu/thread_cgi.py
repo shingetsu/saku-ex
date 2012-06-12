@@ -41,8 +41,6 @@ from tag import UserTagList
 
 import os.path
 
-__version__ = "$Revision$"
-
 
 class CGI(gateway.CGI):
 
@@ -125,7 +123,7 @@ class CGI(gateway.CGI):
 
     def print_page_navi(self, page, cache, path, str_path, id):
         size = config.thread_page_size
-        first = len(cache) / size
+        first = len(cache) // size
         if len(cache) % size:
             first += 1
         var = {
@@ -274,7 +272,7 @@ class CGI(gateway.CGI):
         var = {
             'cache': cache,
             'suffixes': suffixes,
-            'limit': config.record_limit*3/4,
+            'limit': config.record_limit * 3 // 4,
         }
         self.stdout.write(self.template('post_form', var))
 

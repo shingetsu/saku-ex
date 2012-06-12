@@ -89,7 +89,7 @@ def search_message(accept_language):
                 q[i] = 1
 
         lang = q.keys()
-        lang.sort(lambda a,b: cmp(q[b], q[a]))
+        lang.sort(key=lambda x: q[x], reverse=True)
     lang.append(config.language)
     for i in lang:
         short_lang = i.split('-')[0]

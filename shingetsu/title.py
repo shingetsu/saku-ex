@@ -34,7 +34,6 @@ import config
 from compatible import md5
 
 __all__ = ['str_encode', 'str_decode', 'file_encode', 'file_decode']
-__version__ = '$Revision$'
 
 
 def str_encode(query):

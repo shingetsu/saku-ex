@@ -44,8 +44,6 @@ cgimodule = {"admin.cgi": admin_cgi,
              "gateway.cgi": gateway_cgi,
              "thread.cgi": thread_cgi}
 
-__version__ = "$Revision$"
-
 
 class ConnectionCounter:
     '''Connection Counter.
@@ -215,7 +213,7 @@ class HTTPRequestHandler(CGIHTTPServer.CGIHTTPRequestHandler):
         try:
             cgiclass = cgimodule[script].CGI
         except KeyError:
-            self.send_error(404, "No such CGI script (%s)" % `scriptname`)
+            self.send_error(404, "No such CGI script (%s)" % repr(scriptname))
             return
         self.send_response(200, "Script output follows")
 
