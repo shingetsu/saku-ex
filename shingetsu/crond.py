@@ -26,7 +26,6 @@
 # SUCH DAMAGE.
 #
 
-import dircache
 import gc
 import re
 import urllib
@@ -79,7 +78,6 @@ class Crond(Thread):
     def clear_cache(self):
         try:
             re.purge()
-            dircache.reset()
             tiedobj.reset()
         except Exception, err:
             sys.stderr.write('Crond.clear_cache(): %s\n' % err)

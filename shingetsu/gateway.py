@@ -27,15 +27,11 @@
 #
 
 import cgi
-import os.path
+import os
 import re
 import urllib
 import sys
 import time
-if hasattr(sys, "winver"):
-    from os import listdir
-else:
-    from dircache import listdir
 
 import basecgi
 import config
@@ -221,7 +217,7 @@ class CGI(basecgi.CGI):
 
     def extension(self, suffix):
         filename = []
-        for i in listdir(config.abs_docroot):
+        for i in os.listdir(config.abs_docroot):
             if i.endswith('.%s' % suffix) and \
                (not (i.startswith('.') or i.startswith('_'))):
                 filename.append(i)
