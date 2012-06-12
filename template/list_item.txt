@@ -23,5 +23,5 @@
   #end for
   </span>
 #end if
-(${len($cache)}/${'%.1f' % ($cache.size/1024/1024.0)}$message['mb'])
+(${len($cache)}/${'%.1f' % ($cache.size//1024//1024.0)}$message['mb'])
 </li>

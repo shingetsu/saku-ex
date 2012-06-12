@@ -25,12 +25,12 @@ clean:
 	rm -f saku
 	rm -Rf build dist root
 	rm -Rf cache log run
-	find . -name "*.py[co]" \! -path ".git/*" -print0 | xargs -0 rm -f
+	find . -name "*.py[co]" \! -path ".git/*" -print0 | xargs -0 -r rm -f
 
 distclean: clean
 	find . \( -name "*~" -o -name "#*" -o -name ".#*" \) \! -path ".git/*" \
 	    -print0 | \
-	    xargs -0 rm -fv
+	    xargs -0 -r rm -fv
 
 package: distclean version
 	-rm -Rf $(PACKAGE_DIR)/$(PACKAGE).tar.gz $(PACKAGE_DIR)/$(PACKAGE)

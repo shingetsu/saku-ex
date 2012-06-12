@@ -2,7 +2,7 @@
  * Copyright (c) 2005-2012 shinGETsu Project.
  *#
 #set $status = '(%s/%d/%.1f%s)' % \
-     ($title, len($cache), $cache.size/1024/1024.0, $message['mb'])
+     ($title, len($cache), $cache.size//1024/1024.0, $message['mb'])
 
 #if $isadmin
   <form method="post" action="$admin_cgi">

@@ -24,7 +24,7 @@
 <span class="stamp" id="s$rec['stamp']">$localtime($rec['stamp'])</span>
 #if 'attach' in $rec
   <a href="$thread_cgi/$cache.datfile/$rec['id']/$rec['stamp'].$suffix">$rec['stamp'].$suffix</a>
-  (${int($attach_size/1024)}$message['kb'])
+  (${int($attach_size//1024)}$message['kb'])
 #end if
 </dt>
 <dd id="b$sid">$body
