@@ -2,21 +2,52 @@
  * Copyright (C) 2005-2012 shinGETsu Project.
  */
 
-shingetsu.plugins.popupAnchor = function (e, aid) {
-    var dtHtml = $('#r' + aid).html();
-    var ddHtml = $('#b' + aid).html();
-
-    dtHtml = dtHtml.replace(new RegExp('</?(input|a)[^<>]*>', 'ig'), '');
-    ddHtml = ddHtml.replace( new RegExp('(<br[^<>]*>\\s*)*$', 'i'), '');
-
-    var coordinate = new shingetsu.plugins.Coordinate(e);
-    var dl = $('<dl>');
-    dl.html('<dt>' + dtHtml + '</dt><dd>' + ddHtml + '</dd>');
-    shingetsu.plugins.showPopup(coordinate, dl.get());
-}
-
 shingetsu.initialize(function () {
+    var ajaxCache = {};
+
+    shingetsu.plugins.popupAnchor = function (e, aid) {
+        function doPopup(coordinate, html) {
+            html = html.replace(new RegExp('</?(input|a)[^<>]*>', 'ig'), '')
+                       .replace(new RegExp('(<br[^<>]*>\\s*)*$', 'i'), '');
+            if (html.search(/<dt/) < 0) {
+                html = '<div>Error or Not Found</div>';
+            }
+            shingetsu.plugins.showPopup(coordinate, html);
+        }
+
+        function popupInner(coordinate, dt, dd) {
+            var html = '<dl><dt>' + dt.html() + '</dt><dd>' + dd.html() + '</dd></dl>';
+            doPopup(coordinate, html);
+        }
+
+        function popupAjax(coordinate, aid) {
+            if (ajaxCache[aid]) {
+                doPopup(coordinate, ajaxCache[aid]);
+                return;
+            }
+            shingetsu.plugins.showPopup(coordinate, '<div>Loading...</div>');
+            $.ajax({
+                url: e.currentTarget.href + '?ajax=true',
+                dataType: 'html',
+                success: function (html) { 
+                    ajaxCache[aid] = html;
+                    doPopup(coordinate, html);
+                }
+            });
+        }
+
+        var coordinate = new shingetsu.plugins.Coordinate(e);
+        var dt = $('#r' + aid);
+        var dd = $('#b' + aid);
+        if (dt.length && dd.length) {
+            popupInner(coordinate, dt, dd);
+        } else {
+            popupAjax(coordinate, aid);
+        }
+    };
+
     function tryJump(event, id) {
+        shingetsu.plugins.hidePopup();
         if (! document.getElementById('r' + id)) {
             return;
         }
