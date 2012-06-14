@@ -44,23 +44,9 @@ shingetsu.initialize(function () {
     button.addClass('btn');
     form.find('.form-actions').append(button);
 
-    var inputs = form.find('.post-advanced');    
+    var inputs = form.find('.post-advanced');
     var controller = new Controller(inputs, button);
     button.click(function (e) { controller.toggle(e) } );
 
-    function areDefault(inputs) {
-        if (inputs.find(':text[value!=""], :password[value!=""]').length > 0) {
-            return false;
-        }
-        if (inputs.find(':checkbox:not(:checked)').length > 0) {
-            return false;
-        }
-        return true;
-    }
-
-    if (areDefault(inputs)) {
-        controller.hide(0);
-    } else {
-        controller.show(0);
-    }
+    controller.hide(0);
 });
