@@ -53,7 +53,7 @@ Sakuは Shingetsu Another Keen Utility の略です。
 ------------------------------
 1. ポート 8000/tcp を開けてください。
 2. file/saku.ini ファイルでポート番号などを設定できます。
-   詳しくは file/sample.ini をご覧ください。
+   詳しくは doc/sample.ini をご覧ください。
 3. 次のコマンドで起動します。
 
         % python ./saku.py -v

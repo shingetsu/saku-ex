@@ -48,18 +48,17 @@ def setup_data_files():
     copytree("www/jquery", os.path.join(www_dir, 'jquery'))
 
     globcopy("README*", doc_dir)
-    globcopy("file/changelog*", doc_dir)
+    globcopy("doc/README*", doc_dir)
 
-    globcopy("file/*.ini", sample_dir)
-    globcopy("file/*.sample", sample_dir)
     globcopy("file/*node*.txt", sample_dir)
     globcopy("file/spam.txt", sample_dir)
-    globcopy("tool/saku.init", sample_dir)
+    globcopy("doc/*.sample", sample_dir)
+    copy('doc/sample.ini', os.path.join(sample_dir, 'saku.ini'))
 
-    #copy("file/sample.ini", os.path.join(conf_dir, "saku.ini"))
+    #copy("doc/sample.ini", os.path.join(conf_dir, "saku.ini"))
     #copy("file/spam.txt", os.path.join(conf_dir, "spam.txt"))
     #copy("file/initnode.txt", os.path.join(conf_dir, "initnode.txt"))
-    #copy("tool/saku.init", os.path.join(init_dir, "saku"))
+    #copy("doc/init.sample", os.path.join(init_dir, "saku"))
     copy("tool/mkrss.py", os.path.join(lib_dir, "mkrss"))
 
 
