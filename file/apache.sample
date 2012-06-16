@@ -8,9 +8,13 @@
     RewriteMap escape int:escape
 
     <Directory "/srv/www/bbs.shingetsu.info">
-        Options -Indexes -ExecCGI
+        Options -Indexes -ExecCGI Multiviews SymLinksIfOwnerMatch
         RemoveHandler .php
         AddType text/xml;charset=UTF-8 .rdf
+
+        LanguagePriority en ja
+        DirectoryIndex index
+
         RewriteEngine on
         RewriteRule gateway.cgi/rss rss.rdf
         RewriteRule server.cgi - [F]

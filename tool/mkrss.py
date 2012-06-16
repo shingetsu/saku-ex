@@ -49,9 +49,9 @@ docroot = shingetsu.config.apache_docroot
 sep = shingetsu.config.query_separator
 
 
-def urlopen(url):
+def urlopen(url, lang='en'):
     req = urllib2.Request(url)
-    req.add_header('Accept-Language', 'ja;q=1.0, en;q=0.5')
+    req.add_header('Accept-Language', '%s;q=1.0' % lang)
     return urllib2.urlopen(req)
 
 def get_rss():
@@ -63,8 +63,8 @@ def get_rss():
     rssfile.close()
     return date, rss
 
-def get_html(src, dst):
-    htmlfile = urlopen(src)
+def get_html(src, dst, lang='en'):
+    htmlfile = urlopen(src, lang)
     html = htmlfile.read()
     htmlfile.close()
     f = file(os.path.join(docroot, dst), 'w')
@@ -117,6 +117,8 @@ def main():
     write_rss(rss)
     write_sitemap()
     get_html(destination, 'index.html')
+    get_html(destination, 'index.en.html', 'en')
+    get_html(destination, 'index.ja.html', 'ja')
     make_suggest()
 
 if __name__ == "__main__":
