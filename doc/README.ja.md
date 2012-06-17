@@ -5,18 +5,17 @@ Authors
 -------
 * (main) Satoshi Fukutomi <fuktommy@shingetsu.info>
 * sbwhitecap
+* (apollo) replaceable anonymous.
+* (compatible) A shinGETsu user.
+* (thumbnail patch) A shinGETsu user.
+* (imghdr patch) A shinGETsu user.
 
 Contributers
 ------------
 * (run_cgi) Python Software Foundation.
 * (SimpleGzipFile) Python Software Foundation.
-* (apollo) replaceable anonymous.
-* (compatible) A shinGETsu user.
-* (popup.js) Zero corp.
 * (Cheetah) The Cheetah Development Team:
   Tavis Rudd, Mike Orr, Ian Bicking, Chuck Esterbrook.
-* (thumbnail patch) A shinGETsu user.
-* (imghdr patch) A shinGETsu user.
 * (jQuery) The jQuery Foundation.
 * (Twitter Bootstrap) Twitter.
 * (HTML5 Shiv) @afarkas @jdalton @jon_neal @rem
