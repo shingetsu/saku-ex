@@ -18,7 +18,7 @@ Contributers
 * (thumbnail patch) A shinGETsu user.
 * (imghdr patch) A shinGETsu user.
 * (jQuery) The jQuery Foundation.
-* (Bootstrap) Twitter.
+* (Twitter Bootstrap) Twitter.
 * (HTML5 Shiv) @afarkas @jdalton @jon_neal @rem
 
 WebSite
