@@ -157,7 +157,6 @@ retry_join = 2              # Times; Join network
 nodes = 5                   # Nodes keeping in node list
 share_nodes = 5             # Nodes having the file
 search_depth = 30           # Search node size
-accept_spam_count = 10
 tiedfile_cache_size = 30
 
 broadcast = "../tool/broadcast.py"  # Broadcast script path
