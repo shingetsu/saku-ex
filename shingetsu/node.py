@@ -204,7 +204,7 @@ class Node:
         try:
             sys.stderr.write('talk: %s\n' % message)
             res = urlopen(message)
-        except (IOError, AttributeError, socket.error, socket.timeout), err:
+        except Exception, err:
             sys.stderr.write('%s: %s\n' % (message, err))
             return StringIO('')
 
