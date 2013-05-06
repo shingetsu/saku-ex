@@ -9,8 +9,13 @@
 
     <Directory "/srv/www/bbs.shingetsu.info">
         Options -Indexes -ExecCGI Multiviews SymLinksIfOwnerMatch
-        RemoveHandler .php
         AddType text/xml;charset=UTF-8 .rdf
+
+        RemoveHandler .php
+        <FilesMatch "\.ph(p3?|tml)$">
+            SetHandler None
+            ForceType text/plain
+        </FilesMatch>
 
         LanguagePriority en ja
         DirectoryIndex index
@@ -53,13 +58,21 @@
     <Directory "/usr/local/share/saku/www">
         Options -Indexes -ExecCGI
         RemoveHandler .php
+        <FilesMatch "\.ph(p3?|tml)$">
+            SetHandler None
+            ForceType text/plain
+        </FilesMatch>
     </Directory>
 
     Alias /CACHE/ /srv/saku/cache/
     <Directory "/srv/saku/cache">
         Options -Indexes -ExecCGI
-        RemoveHandler .php
         Header add Content-Disposition "attachment"
+        RemoveHandler .php
+        <FilesMatch "\.ph(p3?|tml)$">
+            SetHandler None
+            ForceType text/plain
+        </FilesMatch>
 
         <IfModule mod_proxy.c>
             RewriteEngine on
