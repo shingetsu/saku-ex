@@ -1,5 +1,5 @@
 /* Popup Res Anchor.
- * Copyright (C) 2005-2012 shinGETsu Project.
+ * Copyright (C) 2005-2013 shinGETsu Project.
  */
 
 shingetsu.initialize(function () {
@@ -60,7 +60,7 @@ shingetsu.initialize(function () {
     }
 
     $('a').each(function (i, anchor) {
-        if (anchor.className != 'innerlink') {
+        if (anchor.className != 'innerlink' && anchor.className != 'reclink') {
             return;
         }
         if (anchor.href.search(/([0-9a-f]{8})/) <= 0) {

@@ -1,7 +1,7 @@
 """Saku Gateway base module.
 """
 #
-# Copyright (c) 2005-2012 shinGETsu Project.
+# Copyright (c) 2005-2013 shinGETsu Project.
 # All rights reserved.
 #
 # Redistribution and use in source and binary forms, with or without
@@ -315,7 +315,7 @@ class CGI(basecgi.CGI):
             uri = prefix + self.thread_cgi + self.sep + \
                   self.str_encode(m.group(2)) + \
                   '/' + m.group(3)
-            return '<a href="' + uri + '">[[' + link + ']]</a>'
+            return '<a href="' + uri + '" class="reclink">[[' + link + ']]</a>'
 
         m = re.search(r"^/(thread)/([^/]+)$", link)
         if m is not None:
@@ -328,7 +328,7 @@ class CGI(basecgi.CGI):
             uri = prefix + appli + self.sep + \
                   self.str_encode(m.group(1)) + \
                   '/' + m.group(2)
-            return '<a href="' + uri + '">[[' + link + ']]</a>'
+            return '<a href="' + uri + '" class="reclink">[[' + link + ']]</a>'
 
         m = re.search(r"^([^/]+)$", link)
         if m is not None:
