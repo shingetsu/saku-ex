@@ -225,6 +225,8 @@ class CGI(basecgi.CGI):
             if i.endswith('.%s' % suffix) and \
                (not (i.startswith('.') or i.startswith('_'))):
                 filename.append(i)
+            elif i == '__merged.%s' % suffix:
+                return [i]
         filename.sort()
         return filename
 

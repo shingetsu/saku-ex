@@ -1,5 +1,5 @@
 #!/usr/bin/env python
-# Copyright (C) 2005-2012 shinGETsu Project.
+# Copyright (C) 2005-2013 shinGETsu Project.
 #
 
 import re
@@ -28,6 +28,12 @@ def globcopy(src, dst):
     for i in glob(src):
         copy(i, dst)
 
+def globcat(src, dst):
+    f = open(dst, 'w')
+    for i in glob(src):
+        f.write(open(i).read())
+    f.close()
+
 def setup_script_files():
     copy("saku.py", "saku")
 
@@ -43,6 +49,8 @@ def setup_data_files():
     globcopy("www/*.ico", www_dir)
     globcopy("www/*.js", www_dir)
     globcopy("www/*.xsl", www_dir)
+    globcat("www/*.css", os.path.join(www_dir, '__merged.css'))
+    globcat("www/*.js", os.path.join(www_dir, '__merged.js'))
     copytree("www/bootstrap", os.path.join(www_dir, 'bootstrap'))
     copytree("www/html5js", os.path.join(www_dir, 'html5js'))
     copytree("www/jquery", os.path.join(www_dir, 'jquery'))
