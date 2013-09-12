@@ -30,7 +30,9 @@ def globcopy(src, dst):
 
 def globcat(src, dst):
     f = open(dst, 'w')
-    for i in glob(src):
+    files = glob(src)
+    files.sort()
+    for i in files:
         f.write(open(i).read())
     f.close()
 
