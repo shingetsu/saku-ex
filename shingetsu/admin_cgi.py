@@ -137,7 +137,7 @@ class CGI(gateway.CGI):
             'sid': sid,
             'getbody': getbody,
         }
-	self.header(self.message['del_record'], deny_robot=True)
+        self.header(self.message['del_record'], deny_robot=True)
         self.stdout.write(self.template('delete_record', var))
         self.footer()
 
@@ -213,7 +213,7 @@ class CGI(gateway.CGI):
             'gettitle': gettitle,
             'getcontents': getcontents,
         }
-	self.header(self.message['del_file'], deny_robot=True)
+        self.header(self.message['del_file'], deny_robot=True)
         self.stdout.write(self.template('delete_file', var))
         self.footer()
 
