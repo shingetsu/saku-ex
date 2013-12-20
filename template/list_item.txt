@@ -1,6 +1,5 @@
 #* Saku Gateway List Item.
  * Copyright (c) 2005-2013 shinGETsu Project.
- * $Id$
  *#
 <li>
 #if $isadmin and $remove
