@@ -34,6 +34,8 @@ $cookie
   <link rel="stylesheet" type="text/css" href="$root_path$e?$dummyquery" />
 #end for
   <script type="text/javascript">//<![CDATA[
+    shingetsu.rootPath = "${root_path}";
+    shingetsu.dummyQuery = "$dummyquery";
     shingetsu.uiLang = "$message['lang']";
   //]]></script>
 </head>
