@@ -1,6 +1,8 @@
 Saku-Extreme - a clone of P2P anonymous BBS shinGETsu
 =====================================================
 
+It was merged into [Saku](https://github.com/shingetsu/saku).
+
 Authors
 -------
 * (main) Satoshi Fukutomi <fuktommy@shingetsu.info>

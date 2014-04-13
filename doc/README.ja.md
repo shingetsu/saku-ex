@@ -1,6 +1,8 @@
 朔(Extreme版) - P2P匿名掲示板「新月」のクローン
 ===============================================
 
+[朔](https://github.com/shingetsu/saku)にマージされました。
+
 Authors
 -------
 * (main) Satoshi Fukutomi <fuktommy@shingetsu.info>
